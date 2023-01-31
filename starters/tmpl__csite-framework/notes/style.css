@@ -1,0 +1,103 @@
+/* style.css | Eric Hepperle | 2022-08-27 */
+:root {
+  --color-head: brown;
+  --color-second: green;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  width: clamp(200px, 90vw, 1024px);
+  margin: 0 auto;
+  padding: 1em calc(width - 20px) 3em;
+}
+
+table {
+  width: 100%;
+  border: solid black 2px;
+  border-collapse: collapse;
+  margin: 1rem auto;
+}
+
+th {
+  background-color: antiquewhite;
+  color: gray;
+  border: solid gray 1px;
+}
+
+td {
+  border: solid #ccc 1px;
+}
+
+td:nth-of-type(3) {
+  text-align: center;
+  padding: 3px;
+}
+
+h2 {
+  background: beige;
+  color: brown;
+  font-weight: 700;
+  padding: 0.3rem 1rem;
+  border: solid #ccc 1px;
+}
+
+/* h2:not(:first-of-type) {
+  margin-top: 2rem;
+} */
+
+h3 {
+  font-family: Tahoma;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.logo-img {
+  width: 40px;
+}
+
+/* ICONS */
+
+/* .icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+} */
+
+/* FILE NAME */
+.file {
+  color: var(--color-head);
+}
+
+.file::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f15c"; /* file icon */
+  margin: 0 0.6em 0.3em;
+  color: var(--color-head);
+}
+
+/* WEBSITE ICON */
+
+.site::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0ac"; /* globe icon */
+  margin: 0 0.6em 0.3em;
+}
+
+.site::after {
+  content: url("img/favicon.ico");
+  margin: 0 0.6em 0.3em;
+  width: 28px;
+  height: auto;
+  display: inline-block; /* need for sizing */
+  transform: scale(0.75);
+  position: relative;
+  top: 10px;
+}

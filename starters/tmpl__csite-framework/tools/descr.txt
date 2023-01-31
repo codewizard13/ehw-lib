@@ -1,0 +1,9 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+TOOLS
+
+Contains scripts and SOPs to help automate certain processes

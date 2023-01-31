@@ -1,0 +1,9 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+NOTES
+
+Contains general notes about the repo / project.

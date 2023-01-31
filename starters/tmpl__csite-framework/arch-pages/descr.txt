@@ -1,0 +1,44 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+ARCH-PAGES
+
+Contains information architecture, visual sitemap, pages list, menus list, etc.
+
+Usage:
+
+Create a .TXT doc with https://tree.nathanfriend.io/ ASCII tree generator. This will render in Windows Explorer preview.
+
+1) First, create a tab list of pages and subpages in the main top menu:
+
+Home
+About
+	Our Ministry
+	Our Leadership
+	Our Beliefs
+Blog
+Shop
+	Books
+	Gifts
+	Clearance
+Contact
+
+2) Use the nathanfriend link to generate this:
+
+.
+├── Home
+├── About/
+│   ├── Our Ministry
+│   ├── Our Leadership
+│   └── Our Beliefs
+├── Blog
+├── Shop/
+│   ├── Books
+│   ├── Gifts
+│   └── Clearance
+└── Contact
+
+3) Copy the generated ascii tree into main-pages.txt or menu-top.txt, whichever makes more sense for the project.

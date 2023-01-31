@@ -1,0 +1,22 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+_INPRO (Underscore means this is a database driven folder)
+
+Contains WordPress installs that are in-progress. This is a good place to test new features.
+
+Usage:
+
+Folders should be named as the date with an "i" prepended, like this:
+
+i[YYYYMMDD]/
+
+EX:
+
+bkp
+	i20220909/
+	i20220917/
+	i20221113/

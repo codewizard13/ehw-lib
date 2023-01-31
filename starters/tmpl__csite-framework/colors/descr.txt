@@ -1,0 +1,9 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+COLORS
+
+Contains color palettes, swatches, patterns, etc.

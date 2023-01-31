@@ -1,0 +1,21 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+SCREENS
+
+Contains screenshots of websites.
+
+Naming:
+
+NOTE: Question mark is used to denote "optional".
+
+screen-[CSITE]--[PAGE_NAME]-?full--[HYPHENATED-DESCRIPTION]-[FILE_VERSION].[EXT]
+
+screen-ehw--home--palette03-proph-word-list-01.png
+screen-ehw--home-full--palette03-proph-word-list-01.png
+
+screen-ehw--contact--palette03-proph-word-list-01.png
+screen-ehw--contact-full--palette03-proph-word-list-01.png

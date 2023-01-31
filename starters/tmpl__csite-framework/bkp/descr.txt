@@ -1,0 +1,22 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+BKP
+
+Contains wp-content folder, .sql file, Duplicator backups, and other files needed to build a snapshot of a WordPress website.
+
+Usage:
+
+Folders should be named like this
+
+[YYYYMMDD]/
+
+EX:
+
+bkp
+	20220909/
+	20220917/
+	20221113/

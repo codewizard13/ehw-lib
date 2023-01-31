@@ -1,0 +1,9 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+IMG
+
+This is the main images / pix folder with images and graphics except for icons, screens, and other graphic assets that may be important enough to warrant their own folder.

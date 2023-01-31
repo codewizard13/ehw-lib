@@ -1,0 +1,47 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+_SNAPS (Underscore means this is a database driven folder)
+
+Contains "snapshots", installed versions of a website at a given point in time.
+
+This is as opposed to bkp, which houses the ZIP archives used to generate the snap.
+
+The inpro folder is another "live" site directory run on localhost. This is where I can take a snap and sandbox-modify it and do experiments on snaps. These can be deleted when not needed any more.
+
+---
+
+FILES NEEDED FOR A GOOD BACKUP ARCHIVE:
+
+- Duplicator Archive & installer.php
+- Screenshot of website homepage
+
+other_dirs/
+
+- Backup of any other folders/files in domain root (if this backup is for the primary site)
+
+wp-content/
+
+- Backup of wp-content folder (plugins, themes, uploads)
+
+- Raw .db or .sql database files (where applicable)
+- Any other assets needed should go in the "assets" folder (themes, plugins, etc)
+
+---
+
+
+Naming:
+
+Folders should be named as the date, like this:
+
+[YYYYMMDD]/
+
+EX:
+
+_snaps
+	i20220909/
+	i20220917/
+	i20221113/

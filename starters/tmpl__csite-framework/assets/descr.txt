@@ -1,0 +1,9 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+ASSETS
+
+Contains reusable off-the-shelf WordPress plugins, themes, and other assets.

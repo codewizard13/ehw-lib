@@ -1,0 +1,9 @@
+Eric Hepperle
+2023-01-31
+== ==== ====
+
+ABOUT THIS FOLDER:
+
+DUMMY
+
+Contains lorem ipsum snippets, placeholder images, and other dummy assets.
