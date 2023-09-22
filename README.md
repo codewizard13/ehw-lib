@@ -29,7 +29,6 @@
 
 Repository to house **Eric Heppperle's code library**. Contains code snippets, website starter frameworks, etc. Contains a variety of starter files and packages to save time and encourage consistency in design.
 
-![OneTab logo](img/logoPic-onetab.png)
 
 ~~~batch
 ehw-lib/
@@ -61,15 +60,6 @@ ehw-lib/
 ~~~
 [_created with: [nathanfriend.io](https://tree.nathanfriend.io/) ASCII tree generator_]
 
-## Usage
-
-1. Open OneTab page in a browser and copy-paste the code in `scraper.js` into the console and run it (press Enter).
-2. To save/archive the links results use code inspector in browser to grab the "body" tag and contents, then paste that into a new document and save it.
-
-## Requires
-
-* Browser opened to a YouTube video with developer console exposed.
-
 ## NOTES & CAVEATS
 
 * **_This README is in-progress and under construction._**
@@ -87,25 +77,3 @@ attrib +s folder_name
 #### CAVEATS:
 
 - Make sure you are in the parent folder and that the folder_name doesn't have any relative pathing artifacts (`.\`, `..\`, etc)
-
-## FUTURE
-
-Future plans include:
-
-- [ ] Make searchable via JavaScript `match()` or `RegExp()`
-- [ ] Consider pros/cons of async/await
-- [ ] Write results to .htm file and auto execute in new browser tab
-- [ ] Save file as CSV
-- [ ] Make remote (Puppeteer? Cheerio?) so copy-paste not required
-    
-### Materials/References
-
-#### Online:
-
-- https://www.youtube.com/watch?v=lgyszZhAZOI
-- https://www.youtube.com/watch?v=S67gyqnYHmI
-
-#### Local Files:
-
-- ehCode_2016.05.25_javascript_csvFromAllLinksOnPage_02.js.txt
-- [ref/](./ref/)
