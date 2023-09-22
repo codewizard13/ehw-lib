@@ -1,0 +1,26 @@
+clear; yt-dlp --print filename -o "UPLOADER: %(uploader)s/ CHANNEL: %(channel)s - %(title)s.%(ext)s" --playlist-end 1 "https://rumble.com/v2wi7ee-6.26.23-clowns-losing-control-russia-fake-feds-removing-entrenched-bad-acto.html" --replace-in-metadata "title,uploader" "[:]" ""
+
+
+# REPLACES gargbage chars and leaves spaces
+clear; yt-dlp --print filename -o "UPLOADER: %(uploader)s/ CHANNEL: %(channel)s - %(title)s.%(ext)s" --playlist-end 1 "https://rumble.com/v2wi7ee-6.26.23-clowns-losing-control-russia-fake-feds-removing-entrenched-bad-acto.html" --compat-options filename-sanitization
+
+
+# REPLACES garbage chars and replaces spaces with underscores
+clear; yt-dlp --print filename -o "UPLOADER: %(uploader)s/ CHANNEL: %(channel)s - %(title)s.%(ext)s" --playlist-end 1 "https://rumble.com/v2wi7ee-6.26.23-clowns-losing-control-russia-fake-feds-removing-entrenched-bad-acto.html" --restrict-filenames
+
+
+
+
+"UPLOADER: %(uploader)s/ CHANNEL: %(channel)s - %(title)s.%(ext)s"
+"E:yt-downloads/_RUMBLE/%(channel)s/%(titles.%ext)s"
+
+
+
+
+yt-dlp.exe --skip-download --write-description --write-thumbnail --convert-thumbnails jpg -f "bv+ba/b" -o "E:yt-downloads/%(uploader)s/%(playlist)s/%(playlist_index)s - %(titles.%ext)s" -w  https://rumble.com/v2yauo2-7.5.23-we-knew-this-day-would-come-liberty-freedom-enemy-in-retreat-stay-to.html ; 
+
+
+# DOWNLOAD AUDIO YT NO PLAYLIST:
+
+C:\Users\erich>yt-dlp.exe --write-description --write-thumbnail --convert-thumbnails jpg -x -f "ba/b" -o "E:/yt-downloads/%(uploader)s/%(title)s.%(ext)s" -w https://www.youtube.com/watch?v=b_N_TnH-WXQ --compat-options filename-sanitization
+

@@ -1,0 +1,1 @@
+youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" -o "%(playlist)s/YT - %(uploader)s - %(upload_date)s - %(title)s.%(ext)s" -ciw https://www.youtube.com/playlist?list=PLc1xdKsdeoYGpsxSEpFz6XMCP3h9hZQVg &&

@@ -1,0 +1,31 @@
+https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI
+
+
+
+yt-dlp -s --print-to-file "||%(playlist_autonumber)03d||%(uploader)s||%(title)s||%(upload_date>%Y-%m-%d)s||%(duration>%H:%M:%S)s||" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" -w https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI
+
+
+
+# DOESN'T WORK
+yt-dlp -s --print-to-file "|}%(playlist_autonumber)03d|}%(uploader)s|}%(title)s|}%(upload_date>%Y-%m-%d)s|}%(duration>%H:%M:%S)s|}" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" -w https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI
+
+# DOESN'T WORK
+yt-dlp -s --print-to-file "|\}%(playlist_autonumber)03d|\}%(uploader)s|\}%(title)s|\}%(upload_date>%Y-%m-%d)s|\}%(duration>%H:%M:%S)s|\}" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" -w https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI
+
+
+# DOESN'T WORK
+yt-dlp -s --print-to-file "|@|%(playlist_autonumber)03d|@|%(uploader)s|@|%(title)s|@|%(upload_date>%Y-%m-%d)s|@|%(duration>%H:%M:%S)s|@|" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" -w https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI
+
+
+## WORKS
+yt-dlp.exe --skip-download --print-to-file "|%(playlist_index)03d|%(uploader)s|%(title)s|%(uploader_id)s|%(upload_date,release_date)s|%(duration>%H:%M:%S)s|" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" --replace-in-metadata title "[\|]+" "-" "https://www.youtube.com/watch?v=fphcUz3lw5Y&list=PLFVmIxMkvVDK-m_HAn2SfGTfNN8EGox16" -w
+
+
+yt-dlp.exe --skip-download --print-to-file "|%(playlist_index)03d|%(uploader)s|%(title)s|%(uploader_id)s|%(upload_date,release_date)s|%(duration>%H:%M:%S)s|" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" --replace-in-metadata title "[\|]+" "-" "https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI" -w
+
+https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI
+
+
+
+## FINAL WORKING VERSION:
+yt-dlp.exe --skip-download -s --print-to-file "|%(playlist_index)03d|%(uploader)s|%(title)s|%(uploader_id)s|%(upload_date,release_date)s|%(duration>%H:%M:%S)s|" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" --replace-in-metadata title "[\|]+" "-" "https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI"

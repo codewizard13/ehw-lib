@@ -1,0 +1,52 @@
+yt-dlp -print-to-file "F:/yt-downloads/__LIST_LOGS/%(playlist)s"  "%(playlist_autonumber)03d__%(uploader)s__%(title)s" https://www.youtube.com/playlist?list=PLFVmIxMkvVDK-m_HAn2SfGTfNN8EGox16
+
+
+
+---
+
+
+
+
+
+C:\Users\erich>yt-dlp.exe --write-description --write-thumbnail --convert-thumbnails jpg -x -f "ba/b" -o "F:/yt-downloads/%(uploader)s/%(title)s.%(ext)s" -w https://www.youtube.com/playlist?list=PLFVmIxMkvVDK-m_HAn2SfGTfNN8EGox16 --compat-options filename-sanitization
+
+
+
+
+
+yt-dlp --print-to-file -s "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt"  "%(playlist_autonumber)03d__%(uploader)s__%(title)s" https://www.youtube.com/playlist?list=PLFVmIxMkvVDK-m_HAn2SfGTfNN8EGox16
+
+
+---
+
+
+yt-dlp -s --print-to-file "%(playlist_autonumber)03d__%(uploader)s__%(title)s" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" https://www.youtube.com/playlist?list=PLFVmIxMkvVDK-m_HAn2SfGTfNN8EGox16
+
+
+
+
+---
+
+## WORKS: 
+
+yt-dlp -s --print-to-file "||%(playlist_autonumber)03d||%(uploader)s||%(title)s||%(upload_date>%Y-%m-%d)s||%(duration>%H:%M:%S)s||" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" https://www.youtube.com/playlist?list=PLFVmIxMkvVDK-m_HAn2SfGTfNN8EGox16
+
+
+### Sample Output
+
+||007||Derek Prince With Subtitles||How To Respond To The Shaking Of All Things? | Derek Prince Bible Study||2020-05-01||01:27:38||
+||008||Destiny Image||A Tidal Wave is Coming! | Prophetic Word from Lana Vawser||2020-12-18||00:50:55||
+||009||Jesus Culture||The Holy Spirit Is In You' Bill Johnson - Jesus Culture||2015-12-04||01:10:27||
+
+
+---
+
+
+yt-dlp -s --print-to-file "\t%(playlist_autonumber)03d\t%(uploader)s\t%(title)s\t%(upload_date>%Y-%m-%d)s\t%(duration>%H:%M:%S)s\t" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" https://www.youtube.com/playlist?list=PLFVmIxMkvVDK-m_HAn2SfGTfNN8EGox16
+
+
+
+
+
+
+
