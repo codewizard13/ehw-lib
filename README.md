@@ -59,7 +59,7 @@ ehw-lib/
       ├── sb/
       └── wp/
 ~~~
-[_created with: nathanfriend.io ASCII tree generator_]
+[_created with: [nathanfriend.io](https://tree.nathanfriend.io/) ASCII tree generator_]
 
 ## Usage
 
