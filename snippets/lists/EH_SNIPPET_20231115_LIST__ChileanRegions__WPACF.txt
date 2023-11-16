@@ -1,0 +1,16 @@
+AI:Aysén del General Carlos Ibáñez del Campo
+AN:Antofagasta
+AP:Arica y Parinacota
+AR:Araucanía
+AT:Atacama
+BI:Biobío
+CO:Coquimbo
+OH:Libertador General Bernardo O'Higgins
+LL:Los Lagos
+LR:Los Ríos
+MG:Magallanes y la Antártica Chilena
+MA:Maule
+RM:Metropolitana de Santiago
+NB:Ñuble
+TA:Tarapacá
+VA:Valparaíso
