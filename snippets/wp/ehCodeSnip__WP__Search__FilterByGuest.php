@@ -10,12 +10,8 @@ DESCRIPTION:
 
 - Display only search results of post type 'guest'.
 
-- $parent_slug : this is an id you make up. It should be self explanatory, in this case 'adminbar-date-time'
-- 'top-secondary' : tells WP to put this node / link / text on the right side
-- the "600" in add_action() : means keep it on the leftmost of that rightmost section
-- $title : This the text that actually displays in the admin bar. Can be text, variables, and HTML. Here we calculate the date and time first as $local_time and the result of that  variable is what will display in the admin bar. If we wanted we could do 'title' => __( 4 * 8 ), and "32" is what would be shown in the admin bar.
-- href : set as "null" because no link is needed
-- Finally, HOVER is disabled for all children of the menu item
+- #GOTCHA: Post type is 'videos' not 'episodes'
+- #GOTCHA: Post type is 'videos' (plural) not 'video'
 
 
 SAMPLE RESULTS:
