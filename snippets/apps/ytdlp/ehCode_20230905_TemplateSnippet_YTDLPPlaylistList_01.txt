@@ -1,3 +1,7 @@
+ATTEMPTS at downloading playlist text without actually downloading media:
+
+-------------------
+
 https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI
 
 
@@ -27,5 +31,5 @@ https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa
 
 
 
-## FINAL WORKING VERSION:
+## FINAL WORKING VERSION: (downloading playlist only)
 yt-dlp.exe --skip-download -s --print-to-file "|%(playlist_index)03d|%(uploader)s|%(title)s|%(uploader_id)s|%(upload_date,release_date)s|%(duration>%H:%M:%S)s|" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" --replace-in-metadata title "[\|]+" "-" "https://www.youtube.com/watch?v=1FmBL5nAuaU&list=PLFVmIxMkvVDJwXMrAxgZfmpoW214Qa_EI"
