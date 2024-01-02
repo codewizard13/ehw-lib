@@ -1,0 +1,32 @@
+Downloaded Sunday Morning Service 12/10/2023:
+
+
+DOWNLOAD SINGLE VIDEO:
+
+yt-dlp.exe --write-description --write-thumbnail --convert-thumbnails jpg -f "bv+ba/b" -o "f:\yt-downloads/%(uploader)s/%(uploader)s - %(title)s.%(ext)s" -w https://www.youtube.com/watch?v=gMsSiIDjNxM
+
+
+DOWNLOAD MULTIPLE VIDEOS as comma separated list (but not yt playlist): DOESN'T WORK #GOTCHA:
+
+Adding multiple URLS separated by commas to download multiple videos does not work -- it only downloads the first video.
+
+yt-dlp.exe --write-description --write-thumbnail --convert-thumbnails jpg -f "bv+ba/b" -o "f:\yt-downloads/%(uploader)s/%(uploader)s - %(title)s.%(ext)s" -w "https://www.youtube.com/watch?v=MrOMi0g0jGA, https://www.youtube.com/watch?v=-Q0HRs57QCo, https://www.youtube.com/watch?v=eBPEoraIeHw, https://www.youtube.com/watch?v=vvtN2UI-2NQ"
+
+
+
+
+DOWNLOAD MULTIPLE VIDEOS as comma separated list (but not yt playlist): DOESN'T WORK #GOTCHA:
+
+Adding multiple URLS separated by commas to download multiple videos does not work -- it only downloads the first video.
+
+yt-dlp.exe --write-description --write-thumbnail --convert-thumbnails jpg -f "bv+ba/b" -o "f:\yt-downloads/%(uploader)s/%(uploader)s - %(title)s.%(ext)s" -w "https://www.youtube.com/watch?v=SVfKXWS_CA4&list=PLFVmIxMkvVDJARFXSZM0CHCLuxcdWOBZw"
+
+
+
+
+
+
+
+Presumably, this part here writes to a CSV (pipe-separated), doesn't download any media, and puts the playlist list in the __LIST_LOGS/ dir:
+
+yt-dlp.exe --skip-download -s --print-to-file "|%(playlist_index)03d|%(uploader)s|%(title)s|%(uploader_id)s|%(upload_date,release_date)s|%(duration>%H:%M:%S)s|" "F:/yt-downloads/__LIST_LOGS/%(playlist)s.txt" --replace-in-metadata title "[\|]+" "-" "https://www.youtube.com/watch?v=vvtN2UI-2NQ"
