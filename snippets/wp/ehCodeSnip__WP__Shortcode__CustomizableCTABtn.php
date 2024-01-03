@@ -47,7 +47,7 @@ function salcodes_cta( $atts ) {
  'label' => 'Button',
  'target' => '_self'
  ), $atts );
- $output = '<p><a href="' . esc_url( $a['link'] ) . '" id="' . esc_attr( $a['id'] ) . '" class="button " style="background:' . esc_attr( $a['color'] ) . '" ' . esc_attr( $a['size'] ) . '" target="' . esc_attr($a['target']) . '">' . esc_attr( $a['label'] ) . '</a></p>';
+ $output = '<p><a href="' . esc_url( $a['link'] ) . '" id="' . esc_attr( $a['id'] ) . '" class="button " style="position: absolute; background:' . esc_attr( $a['color'] ) . '" ' . esc_attr( $a['size'] ) . '" target="' . esc_attr($a['target']) . '">' . esc_attr( $a['label'] ) . '</a></p>';
  return $output;
 }
 
