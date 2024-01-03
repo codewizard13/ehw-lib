@@ -11,7 +11,7 @@ DESCRIPTION:
 
 - From tutorial: https://www.youtube.com/watch?v=izIDOiQgWcU
 
-- A demo of parsing parameters from shortcodes from developers.wordpress.org
+- Prints current year
 
 SAMPLE RESULTS:
 
