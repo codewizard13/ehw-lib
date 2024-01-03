@@ -36,6 +36,8 @@ function shortcode_render_vimeo_iframe_from_id($atts)
 {
   global $post;
 
+  // TEST VID ID: 847341554
+
   // You can change the default custom field name here
   // The "Rumble iFrame" field slug is 'embed'
   $default_custom_field_name = 'embed';
@@ -68,7 +70,3 @@ function shortcode_render_vimeo_iframe_from_id($atts)
 
 // Register shortcode
 add_shortcode('vimeo_iframe', 'shortcode_render_vimeo_iframe_from_id');
-
-
-
-847341554

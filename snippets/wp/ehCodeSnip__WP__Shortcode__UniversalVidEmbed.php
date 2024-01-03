@@ -34,7 +34,7 @@ function shortcode_universal_vid_embed($atts)
   global $post;
 
 
-// TEST VID ID: 847341554
+  // TEST VID ID: 847341554
 
   // You can change the default custom field name here
   // The "Rumble iFrame" field slug is 'embed'
