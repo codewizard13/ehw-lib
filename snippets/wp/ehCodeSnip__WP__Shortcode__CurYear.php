@@ -10,7 +10,6 @@ Date Created: 2024-01-03
 DESCRIPTION:
 
 - From tutorial: https://www.youtube.com/watch?v=izIDOiQgWcU
-
 - Prints current year
 
 SAMPLE RESULTS:
