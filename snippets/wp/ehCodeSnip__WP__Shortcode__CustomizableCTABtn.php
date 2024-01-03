@@ -50,3 +50,13 @@ function salcodes_cta( $atts ) {
 }
 
 
+/** Enqueuing the Stylesheet for the CTA Button */
+
+function salcodes_enqueue_scripts() {
+	global $post;
+	if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'cta_button') ) {
+	wp_register_style( 'salcodes-stylesheet',  plugin_dir_url( __FILE__ ) . 'css/style.css' );
+			wp_enqueue_style( 'salcodes-stylesheet' );
+	}
+ }
+ add_action( 'wp_enqueue_scripts', 'salcodes_enqueue_scripts');
