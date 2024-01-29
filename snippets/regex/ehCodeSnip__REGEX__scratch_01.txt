@@ -1,0 +1,37 @@
+#REGEX:
+
+^(\d{0,2}\r\n)?(.*?)\r\nEdit Duplicate Move Delete\r\n(.*?)\r\n(.*?)$
+
+\U\4\E: \2
+
+
+\[['"]?(.*?)['"]?\]
+
+['$1']
+
+
+'".$row['Author']."'"
+
+
+----
+
+<script>!function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/u6b71p"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");</script>
+
+<div id="rumble_vnkchc"></div>
+<script>
+Rumble("play", {"video":"vnkchc","div":"rumble_vnkchc"});</script>
+
+
+<br/>
+<br/>
+<div>
+Join us this FRIDAY as Steve Shultz interviews Johnny Enlow — LIVE RIGHT HERE — on Dec. 3, at 11 AM Pacific Time. Johnny will be discussing fresh, prophetic intel, including how to navigate through the fog of war we are in, and more! Please join us this Friday with Johnny Enlow!
+
+Elijah List Ministries / ElijahStreams TV, 525 2nd Ave SW, Suite 629 Albany, OR 97321 USA
+Thank you for making the always-free Elijah List Ministries possible! Click here to learn how to partner with us: https://secure.qgiv.com/for/eslsl/
+
+Prefer to donate by mail? Make your check or money order (US Dollars) payable to "ELIJAH LIST MINISTRIES" and mail it to:
+Elijah List Ministries / Elijah Streams TV
+525 2nd Ave SW
+Suite 629
+Albany, OR 97321 USA</div>
