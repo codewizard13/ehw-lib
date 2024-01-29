@@ -334,13 +334,42 @@ https://www.thewindowsclub.com/how-to-change-text-case-in-notepad
 
 ---
 
-
+```
 #REGEX: ^<script>(.*?)"Rumble"\)(.*?)</script>\n+<div.*</div>\n+<script>\n+Rumble(.*?)\);</script>
 
 - LibreOffice Calc
+```
 
 
 
+---
+
+### Format WordPress plugins to update list
+
+Find:
+
+^(.*?)\r\nYou have version (.*?) installed. Update to (.*?). (.*?)\r\nCompatibility with (.*)\r\n(.*?)\r\n\r\nSelect(.*)\r\n
+
+Replace:
+
+- \1: \2 -> \3\r\n
+
+
+RESULT: Converts this,
+
+Admin Columns Pro
+You have version 6.4.2 installed. Update to 6.4.4. View version 6.4.4 details.
+Compatibility with WordPress 6.4.2: 100% (according to its author)
+
+Select Categories to Tags Converter Importer	
+
+into this,
+
+- Admin Columns Pro: 6.4.2 -> 6.4.4
+
+
+
+---
 
 
 
