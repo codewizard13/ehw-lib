@@ -348,6 +348,8 @@ https://www.thewindowsclub.com/how-to-change-text-case-in-notepad
 
 Find:
 
+^(.*?)\r\nYou have version (.*?) installed. Update to (.*?). (.*?)\r\nCompatibility with (.*)\r\n\r\nSelect(.*)\r\n
+
 ^(.*?)\r\nYou have version (.*?) installed. Update to (.*?). (.*?)\r\nCompatibility with (.*)\r\n(.*?)\r\n\r\nSelect(.*)\r\n
 
 Replace:
