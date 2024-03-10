@@ -43,6 +43,120 @@ REFERENCES:
 
 #>
 
+
+
+
+function Function-Setup {
+
+    function Create-Dir-If-Not-Exist {
+        param($FolderPath = "C:\Temp")
+     
+        #Check if Folder exists
+        If (!(Test-Path -Path $FolderPath)) {
+            #powershell create directory
+            New-Item -ItemType Directory -Path $FolderPath
+            Write-Host "New folder created successfully!" -f Green
+        }
+        Else {
+            Write-Host "Folder already exists!" -f Yellow
+        }
+    
+    
+        #Read more: https://www.sharepointdiary.com/2021/07/create-a-folder-using-powershell.html#ixzz8U5A0no9r
+    }
+
+    function Create-Multiple-Dirs {
+        param($Dirs, $DestRoot = $(Get-Location))
+        # $Dirs = List of directory names to create
+        # $DestRoot = The folder to create the new directories in. Defaults to current dir.
+    
+        $CurrentDir = pwd
+        Write-Host "pwd:`t$CurrentDir`n`n" -f Cyan
+        $CurrentDir = $(Get-Location)
+        Write-Host "`$(Get-Location):`t$CurrentDir`n`n" -f Cyan
+    
+        # If no directory list provided, throw error and exit script
+        if ( $Dirs.Count -eq 0) { 
+            Write-Host "Error: The list of subdirectories to create cannot be empty! Please try again.`n" -f Red
+            Exit
+        }
+    
+        
+        # If $DestRoot doesn't exist throw error and exit script
+        if (! (Test-Path -Path $DestRoot)) {
+            Write-Host "Error: The folder `"$DestRoot`" does not exist! Please try the `"Create-Multiple-Dirs`" command again, but use a folder path that exists." -f Red
+            exit;
+        }
+        else {
+            Write-Host "Yay!" -f Green
+        }
+    
+    
+        ForEach ($Dir in $Dirs) {
+    
+            $DirPath = "$DestRoot\$Dir"
+    
+            # Check if Folder exists
+            if ( ! (Test-Path -Path $DirPath) ) {
+            
+                Write-Host "Folder not exist: $DirPath" -f DarkCyan
+    
+                # Powershell create directory
+                New-Item -ItemType Directory -Path $DirPath
+                Write-Host "New folder $DirPath created`n" -f Green
+                Set-Folder-Icon( $DirPath )
+            
+            }
+            else {
+                Write-Host "Folder $DirPath already exists!`n" -f Red
+            }
+    
+    
+            # Write-Host "Dir Name: $Dir" -f Green
+    
+        }
+    
+    
+    }
+
+
+    function Set-Folder-Icon {
+        # $TargetDir = Path - location of folder to create the desktop.ini file in
+        param( $TargetDir = $(Get-Location))
+    
+        $DesktopIni = @"
+    [.ShellClassInfo]
+    IconResource=C:\WINDOWS\System32\SHELL32.dll,316
+"@
+    
+        $desktopIniPath = "$($TargetDir)\desktop.ini"
+    
+        If (Test-Path $desktopIniPath) {
+            Write-Warning "The desktop.ini file already exists."
+        }
+        else {
+            Write-Host "Creating desktop.ini in $TargetDir`n" -f DarkCyan
+            #Create/Add content to the desktop.ini file
+            Add-Content $desktopIniPath -Value $DesktopIni
+    
+            #Set the attributes for $DesktopIni
+            (Get-Item $desktopIniPath -Force).Attributes = 'Hidden, System, Archive'
+    
+            #Finally, set the folder's attributes
+            (Get-Item $TargetDir -Force).Attributes = 'ReadOnly, Directory'
+    
+        }
+        
+    }
+
+    # echo "Exting Function-Setup" -f yellow
+
+}
+. Function-Setup
+
+
+
+
 # Define the folders to be created
 $dirNames = @('_AutoReg', '_BankTrans', '_Giving', '_HealthSavAcct', '_JobExpenses', '_JobHuntExp', '_Orders', '_Receipts', '_PropertyTaxes', '_Retirement', '_PrevReturns', '_W2', '_DefTerms')
 
@@ -58,82 +172,15 @@ $dirNames = @('_AutoReg', '_BankTrans', '_Giving', '_HealthSavAcct', '_JobExpens
 # }
 
 
-function Create-Dir-If-Not-Exist {
-    #Variable
-    $FolderPath = "C:\Temp"
- 
-    #Check if Folder exists
-    If (!(Test-Path -Path $FolderPath)) {
-        #powershell create directory
-        New-Item -ItemType Directory -Path $FolderPath
-        Write-Host "New folder created successfully!" -f Green
-    }
-    Else {
-        Write-Host "Folder already exists!" -f Yellow
-    }
 
-
-    #Read more: https://www.sharepointdiary.com/2021/07/create-a-folder-using-powershell.html#ixzz8U5A0no9r
-}
 
 # Create-Dir-If-Not-Exist
 
-function Create-Multiple-Dirs {
-    param($Dirs, $DestRoot = $(Get-Location))
-    # $Dirs = List of directory names to create
-    # $DestRoot = The folder to create the new directories in. Defaults to current dir.
 
-    $CurrentDir = pwd
-    Write-Host "pwd:`t$CurrentDir`n`n" -f Cyan
-    $CurrentDir = $(Get-Location)
-    Write-Host "`$(Get-Location):`t$CurrentDir`n`n" -f Cyan
-
-    # If no directory list provided, throw error and exit script
-    if ( $Dirs.Count -eq 0) { 
-        Write-Host "Error: The list of subdirectories to create cannot be empty! Please try again.`n" -f Red
-        Exit
-    }
-
-    
-    # If $DestRoot doesn't exist throw error and exit script
-    if (! (Test-Path -Path $DestRoot)) {
-        Write-Host "Error: The folder `"$DestRoot`" does not exist! Please try the `"Create-Multiple-Dirs`" command again, but use a folder path that exists." -f Red
-        exit;
-    }
-    else {
-        Write-Host "Yay!" -f Green
-    }
-
-
-    ForEach ($Dir in $Dirs) {
-
-        $DirPath = "$DestRoot\$Dir"
-
-        # Check if Folder exists
-        if ( ! (Test-Path -Path $DirPath) ) {
-        
-            Write-Host "Folder not exist: $DirPath" -f DarkCyan
-
-            # Powershell create directory
-            New-Item -ItemType Directory -Path $DirPath
-            Write-Host "New folder $DirPath created`n" -f Green
-        
-        }
-        else {
-            Write-Host "Folder $DirPath already exists!`n" -f Red
-        }
-
-
-        # Write-Host "Dir Name: $Dir" -f Green
-
-    }
-
-
-}
 
 # Create-Multiple-Dirs $dirNames "Atlantis"
 # Create-Multiple-Dirs $dirNames ("D:\_TaxReturns" + "\texas")
-# Create-Multiple-Dirs $dirNames "D:\_TaxReturns\testing"
+Create-Multiple-Dirs $dirNames "testing"
 
 Write-Host "Continuing ... " -f Green
 
@@ -143,33 +190,8 @@ Write-Host "Continuing ... " -f Green
 <#
 
 #>
-function Set-Folder-Icon {
-    # $TargetDir = Path - location of folder to create the desktop.ini file in
-    param( $TargetDir = $(Get-Location))
 
-    $DesktopIni = @"
-[.ShellClassInfo]
-IconResource=C:\WINDOWS\System32\SHELL32.dll,316
-"@
 
-    $desktopIniPath = "$($TargetDir)\desktop.ini"
+# Set-Folder-Icon
 
-    If (Test-Path $desktopIniPath) {
-        Write-Warning "The desktop.ini file already exists."
-    }
-    else {
-        Write-Host "Creating desktop.ini in $TargetDir`n" -f DarkCyan
-        #Create/Add content to the desktop.ini file
-        Add-Content $desktopIniPath -Value $DesktopIni
-
-        #Set the attributes for $DesktopIni
-        (Get-Item $desktopIniPath -Force).Attributes = 'Hidden, System, Archive'
-
-        #Finally, set the folder's attributes
-        (Get-Item $TargetDir -Force).Attributes = 'ReadOnly, Directory'
-
-    }
-    
-}
-
-Set-Folder-Icon "..\ipsum"
+# Create-Dir-If-Not-Exist "D:\_TaxReturns\testing\blue"
