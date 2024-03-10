@@ -79,11 +79,14 @@ function Create-Dir-If-Not-Exist {
 # Create-Dir-If-Not-Exist
 
 function Create-Multiple-Dirs {
-    param($Dirs, $DestRoot=".")
+    param($Dirs, $DestRoot=$(Get-Location))
     # $Dirs = List of directory names to create
-    # $DestRoot = The folder to create the new directories in
+    # $DestRoot = The folder to create the new directories in. Defaults to current dir.
 
     $CurrentDir = pwd
+    Write-Host "pwd:`t$CurrentDir`n`n" -f Cyan
+    $CurrentDir = $(Get-Location)
+    Write-Host "`$(Get-Location):`t$CurrentDir`n`n" -f Cyan
 
     # If no directory list provided, throw error and exit script
     if ( $Dirs.Count -eq  0) { 
@@ -94,7 +97,7 @@ function Create-Multiple-Dirs {
     
     # If $DestRoot doesn't exist throw error and exit script
     if (! (Test-Path -Path $DestRoot)) {
-        Write-Host "Error: The folder `"$CurrentDir\$DestRoot`" does not exist. Please try the `"Create-Multiple-Dirs`" command again, but use a folder path that exists." -f Red
+        Write-Host "Error: The folder `"$DestRoot`" does not exist! Please try the `"Create-Multiple-Dirs`" command again, but use a folder path that exists." -f Red
         exit;
     } else {
         Write-Host "Yay!" -f Green
@@ -112,10 +115,10 @@ function Create-Multiple-Dirs {
 
             # Powershell create directory
             New-Item -ItemType Directory -Path $DirPath
-            Write-Host "New folder $CurrentDir\$DirPath created`n" -f Green
+            Write-Host "New folder $DirPath created`n" -f Green
         
         } else {
-            Write-Host "Folder $CurrentDir\$DirPath already exists!`n" -f Red
+            Write-Host "Folder $DirPath already exists!`n" -f Red
         }
 
 
@@ -127,6 +130,7 @@ function Create-Multiple-Dirs {
 }
 
 # Create-Multiple-Dirs $dirNames "Atlantis"
-Create-Multiple-Dirs 
+# Create-Multiple-Dirs $dirNames ("D:\_TaxReturns" + "\texas")
+Create-Multiple-Dirs $dirNames "D:\_TaxReturns\testing"
 
 Write-Host "Continuing ... " -f Green
