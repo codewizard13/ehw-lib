@@ -79,7 +79,7 @@ function Create-Dir-If-Not-Exist {
 # Create-Dir-If-Not-Exist
 
 function Create-Multiple-Dirs {
-    param($Dirs, $DestRoot=$(Get-Location))
+    param($Dirs, $DestRoot = $(Get-Location))
     # $Dirs = List of directory names to create
     # $DestRoot = The folder to create the new directories in. Defaults to current dir.
 
@@ -89,7 +89,7 @@ function Create-Multiple-Dirs {
     Write-Host "`$(Get-Location):`t$CurrentDir`n`n" -f Cyan
 
     # If no directory list provided, throw error and exit script
-    if ( $Dirs.Count -eq  0) { 
+    if ( $Dirs.Count -eq 0) { 
         Write-Host "Error: The list of subdirectories to create cannot be empty! Please try again.`n" -f Red
         Exit
     }
@@ -99,7 +99,8 @@ function Create-Multiple-Dirs {
     if (! (Test-Path -Path $DestRoot)) {
         Write-Host "Error: The folder `"$DestRoot`" does not exist! Please try the `"Create-Multiple-Dirs`" command again, but use a folder path that exists." -f Red
         exit;
-    } else {
+    }
+    else {
         Write-Host "Yay!" -f Green
     }
 
@@ -117,7 +118,8 @@ function Create-Multiple-Dirs {
             New-Item -ItemType Directory -Path $DirPath
             Write-Host "New folder $DirPath created`n" -f Green
         
-        } else {
+        }
+        else {
             Write-Host "Folder $DirPath already exists!`n" -f Red
         }
 
@@ -131,6 +133,43 @@ function Create-Multiple-Dirs {
 
 # Create-Multiple-Dirs $dirNames "Atlantis"
 # Create-Multiple-Dirs $dirNames ("D:\_TaxReturns" + "\texas")
-Create-Multiple-Dirs $dirNames "D:\_TaxReturns\testing"
+# Create-Multiple-Dirs $dirNames "D:\_TaxReturns\testing"
 
 Write-Host "Continuing ... " -f Green
+
+
+
+# FUNCTION: Set-Folder-Icon
+<#
+
+#>
+function Set-Folder-Icon {
+    # $TargetDir = Path - location of folder to create the desktop.ini file in
+    param( $TargetDir = $(Get-Location))
+
+    $DesktopIni = @"
+[.ShellClassInfo]
+IconResource=C:\WINDOWS\System32\SHELL32.dll,316
+"@
+
+    $desktopIniPath = "$($TargetDir)\desktop.ini"
+
+    If (Test-Path $desktopIniPath) {
+        Write-Warning "The desktop.ini file already exists."
+    }
+    else {
+        Write-Host "Creating desktop.ini in $TargetDir`n" -f DarkCyan
+        #Create/Add content to the desktop.ini file
+        Add-Content $desktopIniPath -Value $DesktopIni
+
+        #Set the attributes for $DesktopIni
+        (Get-Item $desktopIniPath -Force).Attributes = 'Hidden, System, Archive'
+
+        #Finally, set the folder's attributes
+        (Get-Item $TargetDir -Force).Attributes = 'ReadOnly, Directory'
+
+    }
+    
+}
+
+Set-Folder-Icon "..\ipsum"
