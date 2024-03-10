@@ -1,3 +1,49 @@
+<#
+Type:         	PowerShell Code Snippet
+Sub-Type:     	N/A
+TITLE:        	Create Multiple Folders
+Author:       	Eric Hepperle
+Date Created: 	2024-03-10
+Date Modified:  --
+Version:        00.01.00
+
+DESCRIPTION:
+
+- Creates folders from an array of folder names for setting up tax returns.
+
+
+FUTURE:
+
+- Modify to make more universal 
+
+USAGE:
+
+- Execute the file in the folder you want the subfolders created.
+
+SAMPLE RESULTS:
+
+Folder not exist: .\_Orders
+d-----         3/10/2024  10:32 AM                _Orders
+New folder D:\_TaxReturns\DestDir\_Orders created
+Folder not exist: .\_Receipts
+d-----         3/10/2024  10:32 AM                _Receipts
+New folder D:\_TaxReturns\DestDir\_Receipts created
+
+REQUIRES:
+- PowerShell
+- VSCode or similar IDE to execute console script
+
+TAGS:
+
+PowerShell, Functions, Folders, Loops
+
+REFERENCES:
+- N/A
+
+
+#>
+
+# Define the folders to be created
 $dirNames = @('_AutoReg', '_BankTrans', '_Giving', '_HealthSavAcct', '_JobExpenses', '_JobHuntExp', '_Orders', '_Receipts', '_PropertyTaxes', '_Retirement', '_PrevReturns', '_W2', '_DefTerms')
 
 
@@ -39,6 +85,13 @@ function Create-Multiple-Dirs {
 
     $CurrentDir = pwd
 
+    # If no directory list provided, throw error and exit script
+    if ( $Dirs.Count -eq  0) { 
+        Write-Host "Error: The list of subdirectories to create cannot be empty! Please try again.`n" -f Red
+        Exit
+    }
+
+    
     # If $DestRoot doesn't exist throw error and exit script
     if (! (Test-Path -Path $DestRoot)) {
         Write-Host "Error: The folder `"$CurrentDir\$DestRoot`" does not exist. Please try the `"Create-Multiple-Dirs`" command again, but use a folder path that exists." -f Red
@@ -59,10 +112,10 @@ function Create-Multiple-Dirs {
 
             # Powershell create directory
             New-Item -ItemType Directory -Path $DirPath
-            Write-Host "New folder $CurrentDir\$DirPath created" -f Green
+            Write-Host "New folder $CurrentDir\$DirPath created`n" -f Green
         
         } else {
-            Write-Host "Folder $CurrentDir\$DirPath already exists!" -f Red
+            Write-Host "Folder $CurrentDir\$DirPath already exists!`n" -f Red
         }
 
 
@@ -74,6 +127,6 @@ function Create-Multiple-Dirs {
 }
 
 # Create-Multiple-Dirs $dirNames "Atlantis"
-Create-Multiple-Dirs $dirNames
+Create-Multiple-Dirs 
 
 Write-Host "Continuing ... " -f Green
