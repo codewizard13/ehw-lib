@@ -153,8 +153,9 @@ function Function-Setup {
                 Write-Host "Folder not exist: $DirPath" -f DarkCyan
     
                 # Powershell create directory
-                New-Item -ItemType Directory -LiteralPath $DirPath
+                New-Item -ItemType Directory -Path $DirPath
                 Write-Host "New folder $DirPath created`n" -f Green
+                $IconPath = "..\turbotax_redcheck.ico,0"
                 Set-Folder-Icon( $DirPath )
             
             }
@@ -174,6 +175,7 @@ function Function-Setup {
     function Set-Folder-Icon {
         # $TargetDir = Path - location of folder to create the desktop.ini file in
         param( $TargetDir = $(Get-Location), $IconResource = "C:\WINDOWS\System32\SHELL32.dll,316" )
+        Write-Debug "Inside Set-Folder-Icon ..."
     
         $DesktopIni = @"
     [.ShellClassInfo]
@@ -188,13 +190,13 @@ function Function-Setup {
         else {
             Write-Host "Creating desktop.ini in $TargetDir`n" -f DarkCyan
             #Create/Add content to the desktop.ini file
-            Add-Content $desktopIniPath -Value $DesktopIni
+            Add-Content -LiteralPath $desktopIniPath -Value $DesktopIni
     
             #Set the attributes for $DesktopIni
-            (Get-Item $desktopIniPath -Force).Attributes = 'Hidden, System, Archive'
+            (Get-Item -LiteralPath $desktopIniPath -Force).Attributes = 'Hidden, System, Archive'
     
             #Finally, set the folder's attributes
-            (Get-Item $TargetDir -Force).Attributes = 'ReadOnly, Directory'
+            (Get-Item -LiteralPath $TargetDir -Force).Attributes = 'ReadOnly, Directory'
     
         }
         
