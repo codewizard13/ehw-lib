@@ -4,8 +4,8 @@ Sub-Type:     	N/A
 TITLE:        	Create Multiple Folders
 Author:       	Eric Hepperle
 Date Created: 	2024-03-10
-Date Modified:  --
-Version:        00.01.00
+Date Modified:  2024-03-17
+Version:        00.01.01
 
 DESCRIPTION:
 
@@ -38,8 +38,24 @@ TAGS:
 PowerShell, Functions, Folders, Loops
 
 REFERENCES:
-- N/A
+- https://www.reddit.com/r/PowerShell/comments/f6zlbp/path_vs_literalpath/
 
+
+#GOTCHA: Use -LiteralPath instead of -Path when there are "[]" square brackets in the path name
+
+#NOTE: Upgraded from PowerShell version 5.1 to 7 on Windows 10 with:
+
+winget search Microsoft.PowerShell
+
+# Result
+Name               Id                           Version Source
+---------------------------------------------------------------
+PowerShell         Microsoft.PowerShell         7.3.4.0 winget
+PowerShell Preview Microsoft.PowerShell.Preview 7.4.0.3 winget
+
+winget install --id Microsoft.Powershell --source winget
+
+Check version with: $PSVersionTable
 
 #>
 
@@ -52,9 +68,9 @@ function Function-Setup {
         param($FolderPath = "C:\Temp")
      
         #Check if Folder exists
-        If (!(Test-Path -Path $FolderPath)) {
+        If (!(Test-Path -LiteralPath $FolderPath)) {
             #powershell create directory
-            New-Item -ItemType Directory -Path $FolderPath
+            New-Item -ItemType Directory -LiteralPath $FolderPath
             Write-Host "New folder created successfully!" -f Green
         }
         Else {
@@ -66,9 +82,19 @@ function Function-Setup {
     }
 
     function Create-Multiple-Dirs {
-        param($Dirs, $DestRoot = $(Get-Location))
+        param($Dirs, $DestRoot)
         # $Dirs = List of directory names to create
         # $DestRoot = The folder to create the new directories in. Defaults to current dir.
+
+        # If $DestRoot is NOT empty AND $DestRoot is not ".\"
+        if ( $DestRoot -ne "" -AND $DestRoot -ne ".\") {
+            $destRootOut = "`$DestRoot = $(Get-Location)\$DestRoot`n"
+        } else {
+            $destRootOut = ($DestRoot -eq "") ? "BLANK" : $DestRoot 
+        }
+
+        Write-Host $destRootOut -f DarkYellow
+
     
         $CurrentDir = pwd
         Write-Host "pwd:`t$CurrentDir`n`n" -f Cyan
@@ -83,7 +109,7 @@ function Function-Setup {
     
         
         # If $DestRoot doesn't exist throw error and exit script
-        if (! (Test-Path -Path $DestRoot)) {
+        if (! (Test-Path -LiteralPath $DestRoot)) {
             Write-Host "Error: The folder `"$DestRoot`" does not exist! Please try the `"Create-Multiple-Dirs`" command again, but use a folder path that exists." -f Red
             exit;
         }
@@ -97,12 +123,12 @@ function Function-Setup {
             $DirPath = "$DestRoot\$Dir"
     
             # Check if Folder exists
-            if ( ! (Test-Path -Path $DirPath) ) {
+            if ( ! (Test-Path -LiteralPath $DirPath) ) {
             
                 Write-Host "Folder not exist: $DirPath" -f DarkCyan
     
                 # Powershell create directory
-                New-Item -ItemType Directory -Path $DirPath
+                New-Item -ItemType Directory -LiteralPath $DirPath
                 Write-Host "New folder $DirPath created`n" -f Green
                 Set-Folder-Icon( $DirPath )
             
@@ -122,11 +148,11 @@ function Function-Setup {
 
     function Set-Folder-Icon {
         # $TargetDir = Path - location of folder to create the desktop.ini file in
-        param( $TargetDir = $(Get-Location))
+        param( $TargetDir = $(Get-Location), $IconResource="C:\WINDOWS\System32\SHELL32.dll,316" )
     
         $DesktopIni = @"
     [.ShellClassInfo]
-    IconResource=C:\WINDOWS\System32\SHELL32.dll,316
+    IconResource=$IconResource
 "@
     
         $desktopIniPath = "$($TargetDir)\desktop.ini"
@@ -166,9 +192,9 @@ $dirNames = @('_AutoReg', '_BankTrans', '_Giving', '_HealthSavAcct', '_JobExpens
 # }
 
 ## Get the content from the file list.
-# foreach ($file in Get-Content -Path "$drive\Testing\DEV33.txt") {
-#     $name = (Split-Path -Path $file -Parent) -replace '\\', '_' -replace ':'
-#     New-Item -Path "path\to\$name" -ItemType Directory
+# foreach ($file in Get-Content -LiteralPath "$drive\Testing\DEV33.txt") {
+#     $name = (Split-Path -LiteralPath $file -Parent) -replace '\\', '_' -replace ':'
+#     New-Item -LiteralPath "path\to\$name" -ItemType Directory
 # }
 
 
@@ -180,7 +206,7 @@ $dirNames = @('_AutoReg', '_BankTrans', '_Giving', '_HealthSavAcct', '_JobExpens
 
 # Create-Multiple-Dirs $dirNames "Atlantis"
 # Create-Multiple-Dirs $dirNames ("D:\_TaxReturns" + "\texas")
-Create-Multiple-Dirs $dirNames "testing"
+Create-Multiple-Dirs $dirNames "info"
 
 Write-Host "Continuing ... " -f Green
 
