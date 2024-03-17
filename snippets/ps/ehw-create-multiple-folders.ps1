@@ -143,29 +143,29 @@ function Function-Setup {
         }
     
     
-        # ForEach ($Dir in $Dirs) {
+        ForEach ($Dir in $Dirs) {
     
-        #     $DirPath = "$DestRoot\$Dir"
+            $DirPath = "$DestRoot\$Dir"
     
-        #     # Check if Folder exists
-        #     if ( ! (Test-Path -LiteralPath $DirPath) ) {
+            # Check if Folder exists
+            if ( ! (Test-Path -LiteralPath $DirPath) ) {
             
-        #         Write-Host "Folder not exist: $DirPath" -f DarkCyan
+                Write-Host "Folder not exist: $DirPath" -f DarkCyan
     
-        #         # Powershell create directory
-        #         New-Item -ItemType Directory -LiteralPath $DirPath
-        #         Write-Host "New folder $DirPath created`n" -f Green
-        #         Set-Folder-Icon( $DirPath )
+                # Powershell create directory
+                New-Item -ItemType Directory -LiteralPath $DirPath
+                Write-Host "New folder $DirPath created`n" -f Green
+                Set-Folder-Icon( $DirPath )
             
-        #     }
-        #     else {
-        #         Write-Host "Folder $DirPath already exists!`n" -f Red
-        #     }
+            }
+            else {
+                Write-Host "Folder $DirPath already exists!`n" -f Red
+            }
     
     
-        #     # Write-Host "Dir Name: $Dir" -f Green
+            # Write-Host "Dir Name: $Dir" -f Green
     
-        # }
+        }
     
     
     }
