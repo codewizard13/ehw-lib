@@ -39,6 +39,7 @@ PowerShell, Functions, Folders, Loops
 
 REFERENCES:
 - https://www.reddit.com/r/PowerShell/comments/f6zlbp/path_vs_literalpath/
+- https://lazywinadmin.com/2013/10/powershell-get-substring-out-of-string.html
 
 
 #GOTCHA: Use -LiteralPath instead of -Path when there are "[]" square brackets in the path name
@@ -56,6 +57,7 @@ PowerShell Preview Microsoft.PowerShell.Preview 7.4.0.3 winget
 winget install --id Microsoft.Powershell --source winget
 
 Check version with: $PSVersionTable
+
 
 #>
 
@@ -87,19 +89,42 @@ function Function-Setup {
         # $DestRoot = The folder to create the new directories in. Defaults to current dir.
 
         # If $DestRoot is NOT empty AND $DestRoot is not ".\"
-        if ( $DestRoot -ne "" -AND $DestRoot -ne ".\") {
-            $destRootOut = "`$DestRoot = $(Get-Location)\$DestRoot`n"
+        $thisPwd = $(Get-Location)
+
+        Write-Host "`$thisPwd = $thisPwd`n" -f Cyan
+
+        # HANDLE INPUT for $DestRoot
+        if ( $DestRoot -eq ".\" ) {
+            $destRootOut = "DOT BACKSLASH"
+            $DestRoot = "$(Get-Location)\$DestRoot"
+        }
+        elseif ( $DestRoot -eq "" ) {
+            $destRootOut = "EMPTY STRING"
+            $DestRoot = "$(Get-Location)\$DestRoot"
+        }
+        elseif ( $DestRoot -eq $NULL) {
+            $destRootOut = "NULL"
+            Write-Host "NULL: $(Get-Location)\$DestRoot"
+            $DestRoot = "$(Get-Location)\$DestRoot"
+            # IF $DestRoot is just one word, not a path
+        }
+        elseif ( $DestRoot -match "^[\w_\-]+$" ) {
+            Write-Host "A SINGLE WORD: $DestRoot`n"
+            $DestRoot = "$(Get-Location)\$DestRoot"
+            $destRootOut = "`$DestRoot = $DestRoot"
+            # IF $DestRoot is fully qualified path
+        }
+        elseif ( $DestRoot -like "*:*" ) {
+            Write-Output "A COLON : was found at position $($DestRoot.IndexOf(':')) in"
+            $destRootOut = "`$DestRoot = $DestRoot"
         } else {
-            $destRootOut = ($DestRoot -eq "") ? "BLANK" : $DestRoot 
+            Write-Error "There was an illegal character in your entry. Only numbers, letters, underscore, hyphen, colon, backslash, and forward slash are allowed. Please try again."
+            # Write-Host "IndexOf: " $DestRoot.IndexOf("")
+            exit;
         }
 
-        Write-Host $destRootOut -f DarkYellow
-
-    
-        $CurrentDir = pwd
-        Write-Host "pwd:`t$CurrentDir`n`n" -f Cyan
-        $CurrentDir = $(Get-Location)
-        Write-Host "`$(Get-Location):`t$CurrentDir`n`n" -f Cyan
+        Write-Host "ABOUT to write dest root ..."
+        Write-Host "$destRootOut`n" -f DarkYellow
     
         # If no directory list provided, throw error and exit script
         if ( $Dirs.Count -eq 0) { 
@@ -118,29 +143,29 @@ function Function-Setup {
         }
     
     
-        ForEach ($Dir in $Dirs) {
+        # ForEach ($Dir in $Dirs) {
     
-            $DirPath = "$DestRoot\$Dir"
+        #     $DirPath = "$DestRoot\$Dir"
     
-            # Check if Folder exists
-            if ( ! (Test-Path -LiteralPath $DirPath) ) {
+        #     # Check if Folder exists
+        #     if ( ! (Test-Path -LiteralPath $DirPath) ) {
             
-                Write-Host "Folder not exist: $DirPath" -f DarkCyan
+        #         Write-Host "Folder not exist: $DirPath" -f DarkCyan
     
-                # Powershell create directory
-                New-Item -ItemType Directory -LiteralPath $DirPath
-                Write-Host "New folder $DirPath created`n" -f Green
-                Set-Folder-Icon( $DirPath )
+        #         # Powershell create directory
+        #         New-Item -ItemType Directory -LiteralPath $DirPath
+        #         Write-Host "New folder $DirPath created`n" -f Green
+        #         Set-Folder-Icon( $DirPath )
             
-            }
-            else {
-                Write-Host "Folder $DirPath already exists!`n" -f Red
-            }
+        #     }
+        #     else {
+        #         Write-Host "Folder $DirPath already exists!`n" -f Red
+        #     }
     
     
-            # Write-Host "Dir Name: $Dir" -f Green
+        #     # Write-Host "Dir Name: $Dir" -f Green
     
-        }
+        # }
     
     
     }
@@ -148,7 +173,7 @@ function Function-Setup {
 
     function Set-Folder-Icon {
         # $TargetDir = Path - location of folder to create the desktop.ini file in
-        param( $TargetDir = $(Get-Location), $IconResource="C:\WINDOWS\System32\SHELL32.dll,316" )
+        param( $TargetDir = $(Get-Location), $IconResource = "C:\WINDOWS\System32\SHELL32.dll,316" )
     
         $DesktopIni = @"
     [.ShellClassInfo]
@@ -206,7 +231,12 @@ $dirNames = @('_AutoReg', '_BankTrans', '_Giving', '_HealthSavAcct', '_JobExpens
 
 # Create-Multiple-Dirs $dirNames "Atlantis"
 # Create-Multiple-Dirs $dirNames ("D:\_TaxReturns" + "\texas")
-Create-Multiple-Dirs $dirNames "info"
+# Create-Multiple-Dirs $dirNames "info"
+# Create-Multiple-Dirs $dirNames "info@"
+# Create-Multiple-Dirs $dirNames "in+fo"
+# Create-Multiple-Dirs $dirNames ".\"
+# Create-Multiple-Dirs $dirNames 
+Create-Multiple-Dirs $dirNames "D:\_TaxReturns\_TMPL__TAXRETURN_YYYYMMDD__Y[TAX_YEAR]\info"
 
 Write-Host "Continuing ... " -f Green
 
