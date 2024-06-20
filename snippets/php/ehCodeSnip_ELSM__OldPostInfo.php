@@ -1,5 +1,4 @@
 <?php
-/*
 /* 
 Type:         	WordPress Code Snippet
 Sub-Type:     	N/A
