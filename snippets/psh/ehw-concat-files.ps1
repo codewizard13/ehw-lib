@@ -53,13 +53,18 @@ Get-ChildItem -Path $sourceFolder -Filter "*.docx" | ForEach-Object {
 
     Write-Host "Processing file: $fileName" -ForegroundColor Cyan
 
-    # Read the first line of the file to check for matching
+    # Read the first line and assign it to $firstLine
     $firstLine = pandoc $_.FullName -t plain | Select-Object -First 1
+
+    # Remove the first line from the formatted content
+    $formattedContent = (pandoc $_.FullName -t plain) -split '\n', 2 | Select-Object -Last 1
+
 
     if ($firstLine.ToLower().Trim() -eq $fileTitle.ToLower()) {
         $matchStatus = "MATCHES"
         $logEntry = "$fileName`t`t$matchStatus"
-    } else {
+    }
+    else {
         $matchStatus = "DOESN'T MATCH"
         $logEntry = "$fileName`t$firstLine`t$matchStatus"
     }
@@ -78,7 +83,7 @@ Get-ChildItem -Path $sourceFolder -Filter "*.docx" | ForEach-Object {
     @"
 $header
 $firstLine
-$date
+[[DATE]]
 $formattedContent
 "@ | Out-File -FilePath $tempFile -Append
 }
