@@ -45,7 +45,7 @@ Write-Host "Starting to process files in folder: $sourceFolder" -ForegroundColor
 "Filename`tFirst Line`tMatch Status" | Out-File -FilePath $logFilePath
 
 # Process each .docx file in the source folder
-Get-ChildItem -Path $sourceFolder -Filter "*.docx" | ForEach-Object -Begin { $index = 0 } -Process {
+Get-ChildItem -Path $sourceFolder -Filter "*.docx" | ForEach-Object {
   $fileName = $_.Name
   $fileTitle = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)
   $header = "############################################################"
@@ -64,8 +64,8 @@ Get-ChildItem -Path $sourceFolder -Filter "*.docx" | ForEach-Object -Begin { $in
   $formattedContent = $lines[1..($lines.Length - 1)] -join "`n"
 
   # Debugging (comment out or remove in production)
-  Write-Host "`$firstLine: $firstLine" -ForegroundColor Magenta
-  Write-Host "`$formattedContent: $formattedContent" -ForegroundColor Magenta
+#   Write-Host "`$firstLine: $firstLine" -ForegroundColor Magenta
+#   Write-Host "`$formattedContent: $formattedContent" -ForegroundColor Magenta
 
   if ($firstLine.ToLower().Trim() -eq $fileTitle.ToLower()) {
       $matchStatus = "MATCHES"
@@ -89,17 +89,11 @@ Get-ChildItem -Path $sourceFolder -Filter "*.docx" | ForEach-Object -Begin { $in
   @"
 $header
 $firstLine
-$date
-$formattedContent
+[DATE]
+$formattedContent.Trim()
 "@ | Out-File -FilePath $tempFile -Append
 
-  $index++
 
-  # Stop after processing 3 files
-  if ($index -ge 3) {
-      Write-Host "Reached 3 files processed. Stopping." -ForegroundColor Yellow
-      return
-  }
 }
 
 # Convert the markdown file to a single docx file
@@ -107,7 +101,7 @@ Write-Host "Generating combined document: $outputFile" -ForegroundColor Green
 pandoc $tempFile -o $outputFile
 
 # Clean up temp file
-Remove-Item $tempFile
+# Remove-Item $tempFile
 
 Write-Host "Completed. Combined document created at: $outputFile" -ForegroundColor Green
 Write-Host "Log file created at: $logFilePath" -ForegroundColor Green
