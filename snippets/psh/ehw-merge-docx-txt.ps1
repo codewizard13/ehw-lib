@@ -4,14 +4,6 @@ param (
     [string]$outputFileName
 )
 
-# Function to replace Microsoft quotes with standard quotes
-function Replace-MicrosoftQuotes {
-    param ([string]$content)
-    $content = $content -replace "[\u201C\u201D]", '"'
-    $content = $content -replace "[\u2018\u2019]", "'"
-    return $content
-}
-
 # Validate parameters
 if (-not (Test-Path $sourceFolder)) {
     Write-Host "Source folder does not exist: $sourceFolder" -ForegroundColor Red
