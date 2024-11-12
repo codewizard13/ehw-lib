@@ -1,6 +1,6 @@
 # Parameters
-$folderPath = "C:\path\to\your\folder"  # Change this to the path of your folder with .docx files
-$outputFile = "$folderPath\merged_document.docx"  # Output file name
+$folderPath = "."  # Change this to the path of your folder with .docx files
+$outputFile = "$folderPath\results\merged_document.docx"  # Output file name
 
 # Check if Pandoc is installed
 if (!(Get-Command "pandoc" -ErrorAction SilentlyContinue)) {
