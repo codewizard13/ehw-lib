@@ -1,20 +1,37 @@
+param (
+    [string]$sourceFolder,
+    [string]$outputFileDir,
+    [string]$outputFileName = "merged_doc.docx"
+)
+
 # Parameters
-$folderPath = "."  # Change this to the path of your folder with .docx files
-$outputFile = "$folderPath\results\merged_document.docx"  # Output file name
+$sourceFolder =   # Change this to the path of your folder with .docx files
+$resultsFolder = "$outputFileDir"
+$outputFilePath = "$resultsFolder/$outputFilename"  # Output file name
+
+# Create results folder if it doesn't exist
+$resultFolderPath = Join-Path -Path $outputFilePath -ChildPath "results"
+if (-not (Test-Path $resultFolderPath)) {
+    New-Item -Path $resultFolderPath -ItemType Directory
+}
 
 # Check if Pandoc is installed
 if (!(Get-Command "pandoc" -ErrorAction SilentlyContinue)) {
     Write-Host "Pandoc is not installed. Please install Pandoc first." -ForegroundColor Red
     exit
+} else {
+  Write-Host "Found Pandoc ..." -ForegroundColor Magenta
 }
 
 # Get all .docx files in the folder
-$docxFiles = Get-ChildItem -Path $folderPath -Filter "*.docx" | Sort-Object Name
+$docxFiles = Get-ChildItem -Path $sourceFolder -Filter "*.docx" | Sort-Object Name
 $fileCount = $docxFiles.Count
 
 if ($fileCount -eq 0) {
     Write-Host "No .docx files found in the specified folder." -ForegroundColor Yellow
     exit
+} else {
+  Write-Host "Found $fileCount .docx files" -ForegroundColor Magenta
 }
 
 # Initialize progress variables
@@ -22,7 +39,7 @@ $progressBarWidth = 50
 $currentFile = 0
 
 # Create a temporary text file to list all .docx files for Pandoc
-$tempListFile = "$folderPath\docx_file_list.txt"
+$tempListFile = "$resultsFolder\docx_file_list.txt"
 $docxFiles | ForEach-Object { $_.FullName } | Out-File -FilePath $tempListFile -Encoding UTF8
 
 # Progress bar function
@@ -47,10 +64,10 @@ foreach ($file in $docxFiles) {
 }
 
 # Run Pandoc to merge files
-pandoc @$tempListFile -o $outputFile
+pandoc @$tempListFile -o $outputFilePath
 
 # Cleanup temporary file
-Remove-Item $tempListFile -Force
+# Remove-Item $tempListFile -Force
 
 # Completion message
-Write-Host "`nMerge complete! Output saved to $outputFile"
+Write-Host "`nMerge complete! Output saved to $outputFilePath" -ForegroundColor Magenta
