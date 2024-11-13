@@ -1,3 +1,6 @@
+# USAGE:
+#  D:\EHD\Code\ehw-lib\snippets\psh\ehw-merge-mult-docx.ps1 -sourceFolder "." -outputFileDir "." -outputFileName "feb_merged.docx"    
+
 param (
   [string]$sourceFolder = ".",
   [string]$outputFileDir = ".",
