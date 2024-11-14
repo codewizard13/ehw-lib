@@ -97,8 +97,17 @@ foreach ($file in $docxFiles) {
 $docxFilePaths = ($modifiedDocxFiles | ForEach-Object { "`"$_`"" }) -join " "
 
 # Run Pandoc to merge files
-$command = "pandoc $docxFilePaths -o `"$outputFileFQP`""
-Invoke-Expression $command
+# $command = "pandoc $docxFilePaths -o `"$outputFileFQP`""
+# Invoke-Expression $command
+#
+# This approach using Start-Process is often more robust than Invoke-Expression because:
+# - It provides better security by explicitly separating the executable from its arguments
+# - It handles complex file paths and special characters more reliably
+# - The -NoNewWindow and -Wait parameters ensure the process runs cleanly and the script waits for completion
+# - It's a more PowerShell-idiomatic way of running external commands
+# https://www.perplexity.ai/search/what-does-this-error-mean-ehw-.MVBN3NUTnq1yWlGLAGbmQ#2
+$arguments = $docxFilePaths + " -o `"$outputFileFQP`""
+Start-Process -FilePath "pandoc" -ArgumentList $arguments -NoNewWindow -Wait
 
 # Cleanup temporary files
 Remove-Item -Path $tempFolder -Recurse -Force
