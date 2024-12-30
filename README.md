@@ -74,6 +74,14 @@ ehw-lib/
 attrib +s folder_name
 ```
 
-#### CAVEATS:
+#### CAVEATS
 
 - Make sure you are in the parent folder and that the folder_name doesn't have any relative pathing artifacts (`.\`, `..\`, etc)
+
+## QUICK LINKS
+
+- [PHP Snippets](/ehw-lib/snippets/php/)
+- [WordPress Snippets](/ehw-lib/snippets/wp/)
+- [JavaScript Snippets](/ehw-lib/snippets/js/)
+- [Powershell Snippets](/ehw-lib/snippets/psh/)
+- [MySQL Snippets](/ehw-lib/snippets/mysql/)
