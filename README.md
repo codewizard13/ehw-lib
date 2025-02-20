@@ -80,8 +80,8 @@ attrib +s folder_name
 
 ## QUICK LINKS
 
-- [PHP Snippets](/ehw-lib/snippets/php/)
-- [WordPress Snippets](/ehw-lib/snippets/wp/)
-- [JavaScript Snippets](/ehw-lib/snippets/js/)
-- [Powershell Snippets](/ehw-lib/snippets/psh/)
-- [MySQL Snippets](/ehw-lib/snippets/mysql/)
+- [PHP Snippets](snippets/php/)
+- [WordPress Snippets](snippets/wp/)
+- [JavaScript Snippets](snippets/js/)
+- [Powershell Snippets](snippets/psh/)
+- [MySQL Snippets](snippets/mysql/)
