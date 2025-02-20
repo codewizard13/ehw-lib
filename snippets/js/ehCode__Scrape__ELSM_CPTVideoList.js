@@ -35,7 +35,7 @@ section.steve-intro-sec
   button.mcnButton
 
   footer
-    - Contains founer signoff
+    - Contains founder signoff
 
 REQUIREMENTS & DEPENDENCIES:
 - ELSM Astra Child v. >= 6.01
