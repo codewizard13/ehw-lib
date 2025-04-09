@@ -3,8 +3,8 @@
 | Folder Name  | **ehw-lib** |
 | File Name     | README.md                              |
 | Date Created  | 09/22/23                               |
-| Date Modified | --                               |
-| Version       | 0.0.1                                  |
+| Date Modified | 02/20/25                               |
+| Version       | 00.00.02                                  |
 | Programmer    | **Eric Hepperle**                      |
 
 ### TECHNOLOGIES
@@ -74,6 +74,14 @@ ehw-lib/
 attrib +s folder_name
 ```
 
-#### CAVEATS:
+#### CAVEATS
 
 - Make sure you are in the parent folder and that the folder_name doesn't have any relative pathing artifacts (`.\`, `..\`, etc)
+
+## QUICK LINKS
+
+- [PHP Snippets](snippets/php/)
+- [WordPress Snippets](snippets/wp/)
+- [JavaScript Snippets](snippets/js/)
+- [Powershell Snippets](snippets/psh/)
+- [MySQL Snippets](snippets/mysql/)
