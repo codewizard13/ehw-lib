@@ -114,6 +114,7 @@ private/
 
 # Auth Tokens & API Keys
 token.json
+*.key
 
 # Sandboxes & Junk Files
 sb/
