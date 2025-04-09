@@ -11,7 +11,6 @@
  */
 
 import OpenAI from "openai";
-const client = new OpenAI();
 
 // const fs = require('fs');
 // const path = require('path');
@@ -55,14 +54,20 @@ function getApiKeySet(keyFile, brand) {
 }
 
 
-const api_key = getApiKeySet('../_private/api_keys.json', 'openai')
-console.log(`api_key`, api_key.rw.trim())
+const api_key = getApiKeySet('../_private/api_keys.json', 'openai').rw
+console.log(`api_key`, api_key)
 
-// const response = await client.responses.create({
-//     model: "gpt-4o",
-//     input: "Write a one-sentence bedtime story about a unicorn."
-// });
+const client = new OpenAI({
+    apiKey: api_key
+});
 
-// console.log(response.output_text);
+console.log(`client:\n`, client)
+
+const response = await client.responses.create({
+    model: "gpt-4o",
+    input: "Write a one-sentence bedtime story about a unicorn."
+});
+
+console.log(response.output_text);
 
 
