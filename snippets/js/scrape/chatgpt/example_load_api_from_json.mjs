@@ -50,12 +50,13 @@ function getApiKey(keyFile, accessLevel) {
     throw new Error(`API key for access level "${accessLevel}" not found in file.`);
   }
 
-  return apiKey.trim();
+// Return apiKey as array like {'openai': {'ro': 'ro_key', 'rw': 'rw_key'}}
+  return apiKey;
 }
 
 
-// const api_key = getApiKey('_private/api_keys.json', 'openai')
-// console.log(`api_key`, api_key)
+const api_key = getApiKey('../_private/api_keys.json', 'openai')
+console.log(`api_key`, api_key)
 
 // const response = await client.responses.create({
 //     model: "gpt-4o",
