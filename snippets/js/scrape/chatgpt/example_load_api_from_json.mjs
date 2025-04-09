@@ -5,6 +5,9 @@
  * This version is modified to pull the API key from a JSON file
  *  with a custom function.
  * 
+ * #GOTCHA:  There is no free tier, so this code technically works, but without
+ *   subcribing to a paid plan it is useless.
+ * 
  * Author:      Eric L. Hepperle
  * Date:        2025-04-09
  * 
@@ -12,13 +15,8 @@
 
 import OpenAI from "openai";
 
-// const fs = require('fs');
-// const path = require('path');
-
 import fs from 'fs';
 import path from 'path';
-
-console.log('hi')
 
 /**
  * Loads a set of API keys from a JSON-formatted file by brand.
@@ -55,13 +53,11 @@ function getApiKeySet(keyFile, brand) {
 
 
 const api_key = getApiKeySet('../_private/api_keys.json', 'openai').rw
-console.log(`api_key`, api_key)
 
 const client = new OpenAI({
     apiKey: api_key
 });
 
-console.log(`client:\n`, client)
 
 const response = await client.responses.create({
     model: "gpt-4o",
