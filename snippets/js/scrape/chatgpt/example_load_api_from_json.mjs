@@ -13,8 +13,13 @@
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
+
+import fs from 'fs';
+import path from 'path';
+
+console.log('hi')
 
 /**
  * Loads an API key from a JSON-formatted file by access level.
@@ -49,11 +54,14 @@ function getApiKey(keyFile, accessLevel) {
 }
 
 
+// const api_key = getApiKey('_private/api_keys.json', 'openai')
+// console.log(`api_key`, api_key)
+
+// const response = await client.responses.create({
+//     model: "gpt-4o",
+//     input: "Write a one-sentence bedtime story about a unicorn."
+// });
+
+// console.log(response.output_text);
 
 
-const response = await client.responses.create({
-    model: "gpt-4o",
-    input: "Write a one-sentence bedtime story about a unicorn."
-});
-
-console.log(response.output_text);
