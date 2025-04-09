@@ -22,14 +22,14 @@ import path from 'path';
 console.log('hi')
 
 /**
- * Loads an API key from a JSON-formatted file by access level.
+ * Loads a set of API keys from a JSON-formatted file by brand.
  *
  * @param {string} keyFile - Path to the file containing the API keys.
- * @param {string} accessLevel - The key inside the JSON object (e.g., 'ro', 'rw').
+ * @param {string} brand - The key inside the JSON object (e.g., 'ro', 'rw').
  * @returns {string} - The API key for the specified access level.
  * @throws {Error} - If the file doesn't exist, can't be parsed, or the access level is missing.
  */
-function getApiKey(keyFile, accessLevel) {
+function getApiKeySet(keyFile, brand) {
   const filePath = path.resolve(keyFile);
 
   if (!fs.existsSync(filePath)) {
@@ -45,18 +45,18 @@ function getApiKey(keyFile, accessLevel) {
     throw new Error(`Failed to parse JSON in key file: ${err.message}`);
   }
 
-  const apiKey = keys[accessLevel];
-  if (!apiKey) {
-    throw new Error(`API key for access level "${accessLevel}" not found in file.`);
+  const apiKeySet = keys[brand];
+  if (!apiKeySet) {
+    throw new Error(`API key for access level "${brand}" not found in file.`);
   }
 
-// Return apiKey as array like {'openai': {'ro': 'ro_key', 'rw': 'rw_key'}}
-  return apiKey;
+// Return apiKeySet as array like {'openai': {'ro': 'ro_key', 'rw': 'rw_key'}}
+  return apiKeySet;
 }
 
 
-const api_key = getApiKey('../_private/api_keys.json', 'openai')
-console.log(`api_key`, api_key)
+const api_key = getApiKeySet('../_private/api_keys.json', 'openai')
+console.log(`api_key`, api_key.rw.trim())
 
 // const response = await client.responses.create({
 //     model: "gpt-4o",
