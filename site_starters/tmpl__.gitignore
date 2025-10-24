@@ -3,7 +3,7 @@
 # Filename:       .gitignore
 # Created:        2023-01-20
 # Updated:        2025-10-24
-# Version:        1.04.00
+# Version:        1.04.02
 # Author:         Eric L. Hepperle
 #
 # Purpose:
@@ -11,32 +11,46 @@
 #   Copy and modify freely at your own discretion.
 #
 # Usage:
-#   Rename this file to ".gitignore" and place it in your repo root.
+#   Rename this file to ".gitignore" and place in your repo root.
 ###########################################################
 
+# Table of Contents:
+# 1. OS & SYSTEM FILES
+# 2. GIT & REPO METADATA
+# 3. COMPILED & BINARY FILES
+# 4. COMPRESSED & ARCHIVE FILES
+# 5. DEPENDENCIES & MODULES
+# 6. LOGS, DATABASES & TEMP FILES
+# 7. PRIVATE & SENSITIVE DATA
+# 8. AUTOMATION & TEST ARTIFACTS
+# 9. IDE & EDITOR FILES
+# 10. SANDBOXES & TEST FOLDERS
+# 11. CUSTOM RULES & EXTENSIONS
+# 12. NOTES / KEY
+# 13. FOOTER & NOTES 
+###########################################################
 
 ### OS & SYSTEM FILES ######################################
-$RECYCLE.BIN/            # Windows Recycle Bin
-# Desktop.ini            # Track if custom folder icons required
-.DS_Store                # macOS Finder metadata
-Thumbs.db                # Windows image cache files
+$RECYCLE.BIN/
+# Desktop.ini  (custom Windows folder icons)
+.DS_Store
+Thumbs.db
 
 
-### GIT & REPO METADATA ######################################
-.git/                    # Git repository internals
+### GIT & REPO METADATA ####################################
+.git/
 
 
-### COMPILED & BINARY FILES ##################################
-*.com                    # DOS-style executables
-*.dll                    # Dynamic link libraries
-*.exe                    # Executable binaries
-*.class                  # Java compiled classes
-*.o                      # Object files
-*.so                     # Shared object libraries
+### COMPILED & BINARY FILES ################################
+*.com
+*.dll
+*.exe
+*.class
+*.o
+*.so
 
 
-### COMPRESSED & ARCHIVE FILES ###############################
-# Commit unpacked source; Git handles compression internally.
+### COMPRESSED & ARCHIVE FILES #############################
 *.7z
 *.dmg
 *.gz
@@ -47,67 +61,79 @@ Thumbs.db                # Windows image cache files
 *.zip
 
 
-### APPLICATION DEPENDENCIES #################################
-node_modules/            # Node.js dependencies
-# vendor/                # (Optional) PHP dependencies
-# __pycache__/           # (Optional) Python cache directories
+### DEPENDENCIES & MODULES #################################
+node_modules/
+# vendor/
+# __pycache__/
 
 
-### LOGS, DATABASES & TEMP DATA ##############################
-*.log                    # Log files
-*.sql                    # SQL dump or backup files
-*.sqlite                 # SQLite database files
-/db/*.sqlite3            # SQLite3 DBs in /db
-/log/*.log               # Logs under /log
-/log/*.log*              # Rotated or compressed logs
-/tmp/*                   # Temporary or cache data
-/.vagrant                # Vagrant environment metadata
-/spec/reports            # Test result reports
-/coverage                # Code coverage outputs
-/*.sublime-*             # Sublime Text workspace/project files
-/*~                      # Files ending in ~ (editor, tmp)
+### LOGS, DATABASES & TEMP FILES ##########################
+*.log
+*.sql
+*.sqlite
+db/*.sqlite3
+log/*.log
+log/*.log*
+tmp/*
+.vagrant
+spec/reports
+coverage
+*.sublime-*
+*~
 
 
-### PRIVATE, SECURE & SENSITIVE ###############################
-private/                 # Sensitive data folder
-*credential*             # Credential-related files
-*private*                # Additional private items
-token.json               # Auth tokens and API keys
+### PRIVATE & SENSITIVE DATA ###############################
+private/
+*credential*
+*private*
+token.json
 
 
-### DEVELOPMENT, CI/CD & AUTOMATION ###########################
-.gemrc                   # RubyGems config
-chef/                    # Chef automation configs
-public/assets/           # Precompiled static assets
+### AUTOMATION & TEST ARTIFACTS ###########################
+.gemrc
+chef/
+public/assets/
 
-# Playwright test artifacts
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-
-
-### IDE & EDITOR ARTIFACTS ###################################
-/.project                # Aptana project file
-**/*.code-workspace      # VS Code workspaces
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
 
 
-### SANDBOX, PLAYGROUND & TEST AREAS ##########################
-sb/                      # Sandbox folder
-_sb/                     # Alternate sandbox
-sandbox/                 # General testing sandbox
-playground/              # Playground or experiment area
-junk/                    # Temporary junk folder
-*junk*                   # Files or folders containing 'junk'
+### IDE & EDITOR FILES #####################################
+.project
+**/*.code-workspace
 
 
-### CUSTOM / EXTENSIONS ######################################
-# Add personal or project-specific rules below this line.
+### SANDBOXES & TEST FOLDERS #############################
+sb/
+_sb/
+sandbox/
+playground/
+junk/
+*junk*
+
+
+### CUSTOM RULES & EXTENSIONS #############################
+# Add personal or project-specific ignore patterns here.
 # Example:
-#  /screens/
+# screens/
 
 
-### FOOTER / NOTES ###########################################
-# This file evolves. For the latest version, visit:
+### NOTES / KEY ###########################################
+# Explanation of non-obvious patterns:
+#
+# *~          Files ending with a tilde (~) are typically
+#             backup or temporary files created by editors.
+# *.log       All files ending with '.log' are log files.
+# node_modules/ Folder containing Node.js dependencies.
+# .DS_Store   macOS Finder system files to be excluded.
+# .vagrant   Metadata and state files related to Vagrant.
+#
+# This section can be expanded as needed without pushing down main rules.
+
+
+### FOOTER & NOTES ########################################
+# This file evolves. For latest version, see:
 # https://github.com/codewizard13/ehw-lib/blob/master/site_starters/tmpl__.gitignore
 ###########################################################
