@@ -3,8 +3,8 @@
 | Folder Name  | **ehw-lib** |
 | File Name     | README.md                              |
 | Date Created  | 09/22/23                               |
-| Date Modified | 02/20/25                               |
-| Version       | 00.00.02                                  |
+| Date Modified | 10/28/25                               |
+| Version       | 00.00.03                                  |
 | Programmer    | **Eric Hepperle**                      |
 
 ### TECHNOLOGIES
@@ -32,33 +32,50 @@ Repository to house **Eric Heppperle's code library**. Contains code snippets, w
 
 ~~~batch
 ehw-lib/
-  ├── ico/
-  ├── site_starters/
-  │   └── tmpl__csite-framework/
-  │       ├── arch-pages/
-  │       ├── assets/
-  │       │   ├── plugins/
-  │       │   └── themes/
-  │       ├── bkp/
-  │       ├── colors/
-  │       ├── dummy/
-  │       ├── ehd/
-  │       ├── ico/
-  │       ├── img/
-  │       ├── notes/
-  │       ├── sb/
-  │       ├── screens/
-  │       ├── tools/
-  │       ├── ux/
-  │       │   └── mockups/
-  │       ├── _inpro/
-  │       ├── _snaps/
-  │       └── _uns/
-  └── snippets/
-      ├── sb/
-      └── wp/
+  ├───catalogs
+  ├───css
+  ├───ico
+  ├───pix
+  ├───site_starters
+  │   └───tmpl__csite-framework
+  │       ├───arch-pages
+  │       ├───assets
+  │       ├───bkp
+  │       ├───colors
+  │       ├───dummy
+  │       ├───ehd
+  │       ├───ico
+  │       ├───img
+  │       ├───notes
+  │       ├───screens
+  │       ├───tools
+  │       ├───ux
+  │       ├───_inpro
+  │       ├───_snaps
+  │       └───_uns
+  ├───snippets
+  │   ├───blurbs
+  │   ├───csv
+  │   ├───email
+  │   ├───html
+  │   ├───ipsum
+  │   ├───js
+  │   │   └───scrape
+  │   │       ├───chatgpt
+  │   │       └───_ref
+  │   ├───lists
+  │   ├───md
+  │   ├───php
+  │   ├───psh
+  │   ├───py
+  │   │   └───scrape
+  │   │       ├───chatgpt
+  │   │       └───_ref
+  │   ├───regex
+  │   └───wp
+  └───ytdlp
 ~~~
-[_created with: [nathanfriend.io](https://tree.nathanfriend.io/) ASCII tree generator_]
+> *Regenerate folder tree with **Powershell** `tree` command or generate tree from tab-indented list with: [nathanfriend.io](https://tree.nathanfriend.io/) ASCII tree generator*
 
 ## NOTES & CAVEATS
 
@@ -85,3 +102,7 @@ attrib +s folder_name
 - [JavaScript Snippets](snippets/js/)
 - [Powershell Snippets](snippets/psh/)
 - [MySQL Snippets](snippets/mysql/)
+
+### [Catalogs](/catalogs/index.md)
+
+- [My Books](/catalogs/books-mine.md)
