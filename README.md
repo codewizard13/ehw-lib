@@ -38,16 +38,16 @@
 <img align="left" alt="MySQL" title="MySQL" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" style="padding-right:10px;" />
 
 <!-- Misc / simple-icons via jsDelivr -->
-<img align="left" alt="CSV" title="CSV / Data" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/csv.svg" style="padding-right:10px;" />
-<img align="left" alt="Regex" title="Regex" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/regex.svg" style="padding-right:10px;" />
+
 <img align="left" alt="YouTube" title="YouTube / yt-dlp" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/youtube.svg" style="padding-right:10px;" />
 
 <br>
 
-## Expanded technologies
+## Purpose
 
-This repository contains snippets and starter code across several languages, frameworks, and tools. Key detected technologies (icons above) and where they appear in the repo:
+Repository to house **Eric Heppperle's code library** - a comprehensive collection of code snippets, starter frameworks, and utilities across multiple languages and technologies.
 
+### Technologies & Contents
 - HTML5, CSS3, Sass/SCSS — front-end templates and snippets (`snippets/html`, `css/`).
 - JavaScript (browser) & Node.js (npm) — client and tooling scripts; Node examples in `snippets/js/scrape/` (includes `package.json`).
 - PHP & WordPress — many WordPress hooks, shortcodes and helper snippets in `snippets/wp` and `snippets/php`.
@@ -56,15 +56,9 @@ This repository contains snippets and starter code across several languages, fra
 - MySQL, CSV — sample data and DB helpers (`snippets/mysql`, `snippets/csv` and lists).
 - Regex, Email templates, yt-dlp / YouTube helpers — misc utilities under `snippets/regex`, `snippets/email` and `ytdlp/`.
 
-Use these quick links to jump to major snippet categories below.
-
 ## TAGS
 
-`Library` `Snippets` `Code Snippets` `Site Starters` `Custom Frameworks` `CMS` `Markdown` `WordPress` `JavaScript` `ES6`
-
-## Purpose
-
-Repository to house **Eric Heppperle's code library**. Contains code snippets, website starter frameworks, etc. Contains a variety of starter files and packages to save time and encourage consistency in design.
+`Library` `Snippets` `Site Starters` `Custom Frameworks` `CMS` `HTML5` `CSS3` `SCSS` `PHP` `MySQL` `WordPress` `JavaScript` `ES6` `Node.js` `Python` `PowerShell` `Bootstrap` `jQuery` `RegEx` `CSV` `Email Templates` `yt-dlp`
 
 
 ~~~batch
@@ -134,10 +128,25 @@ attrib +s folder_name
 
 ## QUICK LINKS
 
+### Development
 - [PHP Snippets](snippets/php/)
 - [WordPress Snippets](snippets/wp/)
 - [JavaScript Snippets](snippets/js/)
+- [Python Snippets](snippets/py/)
 - [Powershell Snippets](snippets/psh/)
+
+### Data & Content
+- [HTML Templates](snippets/html/)
+- [Email Templates](snippets/email/)
+- [CSV Data](snippets/csv/)
+- [Lists & Reference](snippets/lists/)
+- [Lorem Ipsum](snippets/ipsum/)
+
+### Tools & Utils
+- [Regex Patterns](snippets/regex/)
+- [YouTube Downloads](ytdlp/)
+
+### Database
 - [MySQL Snippets](snippets/mysql/)
 
 ### [Catalogs](/catalogs/index.md)
@@ -177,9 +186,8 @@ cd "C:\_EHW\Project Repos\ehw-lib\snippets\psh"
 - `ytdlp/` — YouTube/yt-dlp helper scripts and playlists
 - `css/`, `ico/`, `pix/` — visual assets and styles
 
-## Recommended small additions
+## Additional Resources
 
-- `snippets/README.md` — explain naming conventions and where runnable examples live.
-- `CONTRIBUTING.md` — short guidelines for adding or editing snippets.
-- `LICENSE` — pick a license (MIT/CC0/etc.) if you want reuse to be explicit.
-- Consider adding `requirements.txt` or `pyproject.toml` for Python examples and a `README` inside `snippets/js/scrape` documenting `npm` commands.
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for snippet naming conventions and guidelines
+- Check [snippets](snippets/index.md) for detailed folder structure
+- This project is licensed under the [GNU GPL v3](LICENSE)
