@@ -1,63 +1,56 @@
-# Project:        ehw-lib/
+###########################################################
+# Project:        MASTER GITIGNORE FILE
+# Filename:       .gitignore
+# Created:        2023-01-20
+# Updated:        2025-10-24
+# Version:        1.04.02
+# Author:         Eric L. Hepperle
 #
-# This Filename:  .gitignore
-# Date Created:   01/20/23
-# Date Updated:   01/31/23
-# Programmer:     Eric L. Hepperle
-# 
-# File Version:    1.00.00
-# 
-# File Purpose:
-#   This is the master .gitignore file I created for my own use. You are free to copy and use this file at your own risk.
+# Purpose:
+#   Master .gitignore template for personal and project use.
+#   Copy and modify freely at your own discretion.
 #
-#######################################################
+# Usage:
+#   Rename this file to ".gitignore" and place in your repo root.
+###########################################################
 
+# Table of Contents:
+# 1. OS & SYSTEM FILES
+# 2. GIT & REPO METADATA
+# 3. COMPILED & BINARY FILES
+# 4. COMPRESSED & ARCHIVE FILES
+# 5. DEPENDENCIES & MODULES
+# 6. LOGS, DATABASES & TEMP FILES
+# 7. PRIVATE & SENSITIVE DATA
+# 8. AUTOMATION & TEST ARTIFACTS
+# 9. IDE & EDITOR FILES
+# 10. SANDBOXES & TEST FOLDERS
+# 11. CUSTOM RULES & EXTENSIONS
+# 12. NOTES / KEY
+# 13. FOOTER & NOTES 
+###########################################################
 
-
-# WINDOWS #
-#######################################################
-
-# Recycle Bin used on file shares
+### OS & SYSTEM FILES ######################################
 $RECYCLE.BIN/
-
-# Windows folder config file: Uncomment if you want custom folder icon changes to be tracked
-# Desktop.ini
-
-
-# MAC OS #
-#######################################################
+# Desktop.ini  (custom Windows folder icons)
 .DS_Store
-
-
-# GIT #
-#######################################################
-.git/
-
-
-# Images & Binaries #
-#######################################################
-#*.jpg
-#*.gif
-#*.png
-
-# Windows image file caches
 Thumbs.db
 
 
-# Compiled source #
-#######################################################
+### GIT & REPO METADATA ####################################
+.git/
+
+
+### COMPILED & BINARY FILES ################################
 *.com
-*.class
 *.dll
 *.exe
+*.class
 *.o
 *.so
 
 
-# Compressed #
-#######################################################
-# it's better to unpack these files and commit the raw source
-# git has its own built in compression methods
+### COMPRESSED & ARCHIVE FILES #############################
 *.7z
 *.dmg
 *.gz
@@ -68,71 +61,79 @@ Thumbs.db
 *.zip
 
 
-# Modules & Packages #
-#######################################################
+### DEPENDENCIES & MODULES #################################
 node_modules/
+# vendor/
+# __pycache__/
 
 
-# Logs and databases #
-#######################################################
+### LOGS, DATABASES & TEMP FILES ##########################
 *.log
 *.sql
 *.sqlite
-
-# Ignore the default SQLite database.
-/db/*.sqlite3
-
-# Ignore all logfiles and tempfiles.
-/log/*.log
-/log/*.log*
-/tmp/*
-/.vagrant
-/spec/reports
-/coverage
-/*.sublime-*
-/*~
+db/*.sqlite3
+log/*.log
+log/*.log*
+tmp/*
+.vagrant
+spec/reports
+coverage
+*.sublime-*
+*~
 
 
-# APPLICATIONS #
-#######################################################
+### PRIVATE & SENSITIVE DATA ###############################
+private/
+*credential*
+*private*
+token.json
 
-# DevOps: Chef, Puppet, Gulp, Grunt, etc
+
+### AUTOMATION & TEST ARTIFACTS ###########################
 .gemrc
 chef/
 public/assets/
 
-# Aptana
-/.project
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
 
 
+### IDE & EDITOR FILES #####################################
+.project
+**/*.code-workspace
 
-# Private Files, Credentials, Secrets #
-#######################################################
-private/
-*credential*
-*private*
 
-# Auth Tokens & API Keys
-token.json
-*.key
-
-# Sandboxes & Junk Files
+### SANDBOXES & TEST FOLDERS #############################
 sb/
+_sb/
 sandbox/
 playground/
 junk/
 *junk*
 
-# Screenshots
+
+### CUSTOM RULES & EXTENSIONS #############################
+# Add personal or project-specific ignore patterns here.
+# Example:
 # screens/
 
 
-# Eric's Custom Files and Folders to Ignore #
-#######################################################
+### NOTES / KEY ###########################################
+# Explanation of non-obvious patterns:
+#
+# *~          Files ending with a tilde (~) are typically
+#             backup or temporary files created by editors.
+# *.log       All files ending with '.log' are log files.
+# node_modules/ Folder containing Node.js dependencies.
+# .DS_Store   macOS Finder system files to be excluded.
+# .vagrant   Metadata and state files related to Vagrant.
+#
+# This section can be expanded as needed without pushing down main rules.
 
 
-
-### ------------------------------------------------ ####
-#  This file is always evolving. Refer to the link at
-#  https://github.com/codewizard13/ehw-lib
-#  for the latest.
+### FOOTER & NOTES ########################################
+# This file evolves. For latest version, see:
+# https://github.com/codewizard13/ehw-lib/blob/master/site_starters/tmpl__.gitignore
+###########################################################
