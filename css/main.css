@@ -1,0 +1,95 @@
+body {
+  max-width: 1200px;
+}
+
+.ehw-doc-descr {
+  background: aliceblue;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: .6rem;
+  border: solid gainsboro .5px;
+}
+
+/* Main topic index file headers */
+
+h1[id*="index-for"] {
+  color: cadetblue;
+}
+h1[id*="index-for"]::before {
+  content: '📑';
+}
+
+/* Main topic PLUGIN index headers */
+
+h1[id*="plugin"] {
+  color: red;
+}
+h1[id*="plugin"]::before {
+  content: '🔌';
+}
+
+/* Add WordPress logo before wordpress titles */
+h1[id*="wordpress"]::before {
+  content: url('../_pix/logos/wordpress-logo.svg');
+  transform: scale(0.5) !important;
+  display: inline-block;
+  flex-direction: row;
+  position: relative;
+  top: 1.2rem;
+}
+
+
+
+/* ////////////////////////////////   NEW STYLES - 2025-09-20 */
+
+
+
+
+/* Tags Section
+____________________________________ */
+
+#sec-tags {
+    /* border: solid brown;
+    border-radius: .6rem;
+    padding: .8rem; */
+}
+#sec-tags ul {
+    list-style: none;
+    display: flex;
+    padding: 0 !important;
+}
+#sec-tags ul li {
+    background: #E6E6FA;
+    padding: .1rem .66rem;
+    margin: .4rem;
+    border-radius: .4rem;
+}
+
+#sec-tags ul li a {
+    color: #000080;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
