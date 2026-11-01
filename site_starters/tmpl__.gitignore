@@ -1,11 +1,10 @@
-###########################################################
 # Project:        MASTER GITIGNORE FILE
 # Filename:       .gitignore
 # Created:        2023-01-20
-# Updated:        2025-10-24
-# Version:        1.04.02
+# Updated:        2025-12-10
+# Version:        1.05.01
 # Author:         Eric L. Hepperle
-#
+# 
 # Purpose:
 #   Master .gitignore template for personal and project use.
 #   Copy and modify freely at your own discretion.
@@ -14,43 +13,62 @@
 #   Rename this file to ".gitignore" and place in your repo root.
 ###########################################################
 
-# Table of Contents:
+# TABLE OF CONTENTS:
 # 1. OS & SYSTEM FILES
 # 2. GIT & REPO METADATA
-# 3. COMPILED & BINARY FILES
-# 4. COMPRESSED & ARCHIVE FILES
-# 5. DEPENDENCIES & MODULES
-# 6. LOGS, DATABASES & TEMP FILES
-# 7. PRIVATE & SENSITIVE DATA
-# 8. AUTOMATION & TEST ARTIFACTS
-# 9. IDE & EDITOR FILES
-# 10. SANDBOXES & TEST FOLDERS
-# 11. CUSTOM RULES & EXTENSIONS
-# 12. NOTES / KEY
-# 13. FOOTER & NOTES 
+# 3. IMAGES & BINARIES
+# 4. COMPILED & BINARY FILES
+# 5. COMPRESSED & ARCHIVE FILES
+# 6. DEPENDENCIES & MODULES
+# 7. LOGS, DATABASES & TEMP FILES
+# 8. PRIVATE & SENSITIVE DATA
+# 9. AUTOMATION & TEST ARTIFACTS
+# 10. IDE & EDITOR FILES
+# 11. SANDBOXES & TEST FOLDERS
+# 12. CUSTOM RULES & EXTENSIONS
+# 13. NOTES / KEY
+# 14. FOOTER & REFERENCES
 ###########################################################
 
-### OS & SYSTEM FILES ######################################
-$RECYCLE.BIN/
-# Desktop.ini  (custom Windows folder icons)
+
+### 1. OS & SYSTEM FILES ##################################
 .DS_Store
 Thumbs.db
+$RECYCLE.BIN/
+Desktop.ini
 
 
-### GIT & REPO METADATA ####################################
+### 2. GIT & REPO METADATA ################################
 .git/
 
 
-### COMPILED & BINARY FILES ################################
+### 3. IMAGES & BINARIES ##################################
+# Common image formats (uncomment as needed)
+#*.jpg
+#*.jpeg
+#*.png
+#*.gif
+#*.bmp
+#*.tiff
+#*.svg
+#*.ico
+
+# Windows image file caches
+Thumbs.db
+
+
+### 4. COMPILED & BINARY FILES #############################
 *.com
+*.class
 *.dll
 *.exe
-*.class
 *.o
 *.so
 
 
-### COMPRESSED & ARCHIVE FILES #############################
+### 5. COMPRESSED & ARCHIVE FILES ##########################
+# It's better to unpack these files before committing.
+# Git handles its own compression.
 *.7z
 *.dmg
 *.gz
@@ -61,51 +79,59 @@ Thumbs.db
 *.zip
 
 
-### DEPENDENCIES & MODULES #################################
+### 6. DEPENDENCIES & MODULES ##############################
 node_modules/
 # vendor/
 # __pycache__/
 
 
-### LOGS, DATABASES & TEMP FILES ##########################
+### 7. LOGS, DATABASES & TEMP FILES ########################
+# Logs
 *.log
+/log/*.log
+/log/*.log*
+/spec/reports
+/coverage
+
+# Databases
 *.sql
 *.sqlite
-db/*.sqlite3
-log/*.log
-log/*.log*
-tmp/*
-.vagrant
-spec/reports
-coverage
-*.sublime-*
-*~
+/db/*.sqlite3
+
+# Temporary files
+/tmp/*
+/.vagrant
+/*~
+/*.sublime-*
 
 
-### PRIVATE & SENSITIVE DATA ###############################
+### 8. PRIVATE & SENSITIVE DATA ############################
 private/
 *credential*
 *private*
 token.json
 
 
-### AUTOMATION & TEST ARTIFACTS ###########################
+### 9. AUTOMATION & TEST ARTIFACTS #########################
+# DevOps tools and assets
 .gemrc
 chef/
 public/assets/
 
+# Test outputs and reports
 test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
 
 
-### IDE & EDITOR FILES #####################################
+### 10. IDE & EDITOR FILES ##################################
+# IDE or editor-specific project metadata
 .project
 **/*.code-workspace
 
 
-### SANDBOXES & TEST FOLDERS #############################
+### 11. SANDBOXES & TEST FOLDERS ###########################
 sb/
 _sb/
 sandbox/
@@ -114,26 +140,24 @@ junk/
 *junk*
 
 
-### CUSTOM RULES & EXTENSIONS #############################
+### 12. CUSTOM RULES & EXTENSIONS ##########################
 # Add personal or project-specific ignore patterns here.
-# Example:
-# screens/
+# Examples:
+#  screens/
+#  local_env/
+#  tmp_data/
 
 
-### NOTES / KEY ###########################################
-# Explanation of non-obvious patterns:
-#
-# *~          Files ending with a tilde (~) are typically
-#             backup or temporary files created by editors.
-# *.log       All files ending with '.log' are log files.
-# node_modules/ Folder containing Node.js dependencies.
-# .DS_Store   macOS Finder system files to be excluded.
-# .vagrant   Metadata and state files related to Vagrant.
-#
-# This section can be expanded as needed without pushing down main rules.
+### 13. NOTES / KEY ########################################
+# *~           Backup/temp files created by editors.
+# *.log        All application log files.
+# node_modules/  Node.js dependencies folder.
+# .DS_Store    macOS Finder metadata.
+# .vagrant     Vagrant environment metadata.
+# Thumbs.db    Windows Explorer image cache.
 
 
-### FOOTER & NOTES ########################################
-# This file evolves. For latest version, see:
+### 14. FOOTER & REFERENCES ################################
+# This file evolves. For the latest version, see:
 # https://github.com/codewizard13/ehw-lib/blob/master/site_starters/tmpl__.gitignore
 ###########################################################
