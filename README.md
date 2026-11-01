@@ -5,7 +5,7 @@
 | Date Created  | 09/22/23                               |
 | Date Modified | 11/01/26                               |
 | Version       | 00.00.04                                  |
-| Programmer    | **Eric Hepperle**                      |
+| Programmer    | **Eric L. Hepperle**                      |
 
 ### TECHNOLOGIES
 
