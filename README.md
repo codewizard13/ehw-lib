@@ -3,8 +3,8 @@
 | Folder Name  | **ehw-lib** |
 | File Name     | README.md                              |
 | Date Created  | 09/22/23                               |
-| Date Modified | 10/28/25                               |
-| Version       | 00.00.03                                  |
+| Date Modified | 11/01/26                               |
+| Version       | 00.00.04                                  |
 | Programmer    | **Eric Hepperle**                      |
 
 ### TECHNOLOGIES
